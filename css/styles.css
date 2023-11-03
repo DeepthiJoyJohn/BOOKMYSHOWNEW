@@ -1,0 +1,180 @@
+.close {
+  font-size: 20px;
+  cursor: pointer;
+  padding-left:15px;
+}
+.popup {
+    display: none;
+    position: absolute;
+    top: 60;
+    left: 300;
+    width: 20%;
+    height: 75%;
+    z-index: 100;
+}
+.signupview{
+  display: none;
+}
+.errortext{
+  color: red;
+  font-size: 12px;
+  
+}
+#signupbtn{
+  display: none;
+}
+.exeusrlink{
+  display:none;
+  line-height: 180%;
+  width:100%;
+  text-align: center;
+  color: #2874f0;
+  background-color: #fff;
+  margin-top: 16px;
+  border: none;
+  display: inline-block;
+  border-radius: 2px;
+  color: #212121;
+  padding: 10px 20px;
+  font-size: 13px;
+  font-weight: 500;
+  transition: box-shadow .2s ease;
+  vertical-align: super;
+  background: #fff;
+  cursor: pointer;
+  outline: none;
+  box-shadow: 0 1px 2px 0 rgba(0,0,0,.1);
+  border: 1px solid #e0e0e0;
+}
+.exelink{
+  color: #2874f0;
+  font-size: 16px;
+  font-weight:550;
+}
+
+.popup-content {
+    position: absolute;
+    top: 50%;
+    left: 125%;
+    height: 525px;
+    width:450px;
+    transform: translate(-50%, -50%);
+    background-color: #fff;    
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    display:flex;
+}
+.loginbtn{
+    background: #fb641b;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,.2);
+    border: none;
+    color: #fff;
+    width: 100%;
+    height: 48px;
+    font-size: 15px;
+}
+.myaccount{  
+    font-size: 18px;
+    color:white;
+    text-decoration: none;
+    font-weight:550;    
+    background-color:#2874f0;
+    width:100px;
+    margin-left: -45px;
+    margin-top: -10px;
+    position: absolute;
+    display:none;
+}
+.myaccount_order{  
+  font-size: 15px;  
+  text-decoration: none;
+  font-weight:550;    
+  background-color:#2874f0;
+  width:100px;
+  margin-left: -45px;
+  margin-top: -7px;
+  position: absolute;
+  cursor: pointer;
+  
+  
+}
+.iconcolor{
+  color:#2874f0; 
+}
+.a_logout{
+  display:none;
+}
+
+.left{
+    background-color:#2874f0;
+    width:275px;
+    height: 525px;
+    
+  }
+.newsignup{
+    font-family: Arial, Helvetica, sans-serif;
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: #2874f0;
+    font-weight: 500;
+    padding-top: 200px;
+    font-size: 12px;
+}
+.terms{
+    color: #878787;
+    font-size: 12px;
+    font-weight: 400;
+    padding-top: 35px;
+    padding-bottom: 20px;
+}
+  .heading{
+    color:#fff;
+    font-weight:540;
+    font-size: 28px;
+    padding:2rem;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  .heading_desc{
+    color: #dbdbdb;
+    line-height: 150%;
+    font-size: 18px;
+    padding-left:2rem;
+    font-family: Arial, Helvetica, sans-serif;
+    justify-content: center;
+
+  }
+  .loginimg{
+   padding-top:140px;
+   padding-left: 2rem;   
+  }
+  .input-group{
+    position:relative;
+    padding-top: 50px;
+    padding-left: 5rem;
+  }
+  .input{
+    padding: 0.5rem 0;    
+    border:none;
+    width:300px;
+    border-bottom: 1px solid #e0e0e0;
+    outline:none;
+  } 
+    
+   
+.label{
+  position:absolute
+  left:0;  
+  top:58%;
+  transform:translateY(-58%);
+  color:#878787; 
+  pointer-events:none;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size:12px;
+  transform-origin:left;
+  transition:transform;  
+}
+/* .input:focus ~ label {
+  transform: translateY(-130%) scale(8.8);
+} */
+

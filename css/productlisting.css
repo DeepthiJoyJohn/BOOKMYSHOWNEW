@@ -1,0 +1,149 @@
+/* Reset default margin and padding */
+body, h1, h2, h3, p, ul, li {
+  margin: 0;
+  padding: 0;
+}
+
+/* Basic styling */
+body {
+  font-family: Arial, sans-serif;
+}
+
+/* Header styles */
+header {
+  background-color: #333;
+  color: white;
+  padding: 10px;
+}
+
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Main content styles */
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 10px;
+}
+
+.product-card {
+  border: 1px solid #ccc;
+  padding: 10px;
+  max-width:250px;
+}
+
+.product-card img {
+  max-width: 100%;
+}
+
+.price {
+  font-weight: bold;
+  color: #e9432f;
+}
+
+/* Footer styles */
+footer {
+  background-color: #f4f4f4;
+  padding: 10px;
+  text-align: center;
+}
+.product {
+  display: flex;
+  align-items: center;
+}
+
+/* Styling for the minus button */
+.minus-button {
+  background-color: #f0f0f0;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.minus-button-order {
+  background-color: #f0f0f0;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+
+
+/* Styling for the plus button */
+.plus-button {
+  background-color: #f0f0f0;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.plus-button-order {
+  background-color: #f0f0f0;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+/* Styling for the quantity input */
+.quantity-input {
+  border: 1px solid #ccc;
+  padding: 5px;
+  text-align: center;
+  width: 40px;
+  margin: 0 10px;
+}
+.quantity-input-order {
+  border: 1px solid #ccc;
+  padding: 5px;
+  text-align: center;
+  width: 40px;
+  margin: 0 10px;
+}
+
+/* Styling for the Add to Cart button */
+.add-to-cart-button {
+  background-color:  #FFFFFF;
+  color: #048bc0;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-weight: bold;
+}
+.basketbtn {
+  background-color:  #2874f0;
+  color: #FFFFFF;
+  border: none;
+  padding: 10px 20px 10px;
+  cursor: pointer;
+  font-weight: bold;
+  float:right;
+  width:180px;
+  margin-bottom:20px;
+  display: flex;
+}
+.gotocart {
+  background-color:  #2874f0;
+  color: #FFFFFF;
+  border: none;
+  padding: 10px 20px 10px;
+  cursor: pointer;
+  font-weight: bold;  
+  width:180px;
+  margin-top:300px;  
+  margin-left:565px;
+
+}
+
+/* Hover effect for buttons */
+.minus-button:hover, .plus-button:hover, .add-to-cart-button:hover {
+  background-color: #0056b3;
+}
+.productlistimg{
+  width:100px;
+  height:100px;
+}

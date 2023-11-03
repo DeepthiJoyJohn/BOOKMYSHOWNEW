@@ -1,0 +1,65 @@
+.bold {
+  font-weight: bold;
+  font-size:12px;
+  width:97px;
+  border-right: 2px solid #808080;
+  
+}
+.nonbold {  
+  font-size:12px;
+  font-weight:normal;
+  width:120px;
+  border-right: 2px solid #808080;
+  
+}
+.nonboldborder {  
+  font-size:12px;
+  font-weight:normal;
+  width:120px;
+  border-right: 2px solid #808080;
+  
+}
+.fullborder {   
+  width:80px;
+  font-weight: normal;
+  font-size:12px; 
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  text-align: center; 
+  vertical-align: middle; 
+  padding: 10px;
+  
+}
+.textalign{
+  text-align: center; /* Center the text horizontally */
+  vertical-align: middle; /* Center the text vertically */
+  padding: 10px;
+}
+.bordertop{  
+  border-top: 2px solid #808080;
+}
+.tableclass{
+  margin-left:54px;
+}
+.footertable{
+  margin-left:54px;
+  margin-right:60px;
+}
+.tdbottomtableleft{
+  width:500px;  
+}
+.tdbottomtableright{
+  text-align:right;
+}
+.selleraddress{
+  font-size: 10px;
+}
+.tableclassbottom{
+  margin-left:55px;
+  border:2px solid #808080;
+  width:635px;
+  table-layout: fixed;
+}
+.alignright{
+ text-align: right;
+}

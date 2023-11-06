@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>Online Shopping Site for Mobiles, Electronics, Furniture, Grocery, Lifestyle, Books & More. Best Offers!</title>
+        <title> Movie Tickets, Plays, Sports, Events &amp; Cinemas near Delhi-NCR - BookMyShow Delhi-NCR.</title>
         <link rel="shortcut icon" href="Images/Icon/icon1.png">
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/styles.css">       
@@ -13,45 +13,46 @@
                 <div class="right">
                     <div class="input-group">
                         <form id="loginform">
-                            <div class="getstarted">Get Started <span class="close" onclick="closeLoginPopup()">&times;</span></div>
-                            <div class="googlediv">
-                                <span class="googlespan">
-                                    <span>
+                            <div id="mainpopupdiv">
+                                <div class="getstarted">Get Started <span class="close" onclick="closeLoginPopup()">&times;</span></div>
+                                <div class="googlediv">
+                                    <span class="googlespan">
                                         <img alt="google logo" src="//in.bmscdn.com/webin/common/icons/googlelogo.svg">
                                     </span>
-                                </span>
-                                Continue with Google
-                            </div><br><br>
-                            <div class="googlediv">
-                                <span>
+                                    Continue with Google
+                                </div><br><br>
+                                <div class="googlediv">
                                     <span class="googlespan">
                                         <img alt="google logo" src="https://in.bmscdn.com/webin/common/icons/email.svg">
                                     </span>
-                                </span>
-                                Continue with Email
+                                    Continue with Email
+                                </div>
+                                <div class="ordiv">OR</div>
+                                <div class="ordiv">
+                                    <img alt="indian flag" src="//in.bmscdn.com/webin/common/icons/indianflag.svg">
+                                    <input id="mobileNo" type="tel" pattern="[0-9]*" placeholder="Continue with mobile number" maxlength="10" onkeyup="checklength()" onclick="myFunction()" value="">
+                                </div>
+                                <span id="errorText" class="errortext"></span><br>
+                                <div>
+                                    <button class="btncontinue" id="btncontinue" onclick="hide()">Continue</button>
+                                </div>
+                                
+                                <div class="newsignup" id="newsignup">
+                                    <a href="https://in.bookmyshow.com/terms-and-conditions">
+                                        I agree to the Terms & Conditions & Privacy Policy
+                                    </a>
+                                </div> 
                             </div>
-                            <div class="ordiv">OR</div>
-                            <div>
-                                <img alt="indian flag" src="//in.bmscdn.com/webin/common/icons/indianflag.svg">
-                                <input id="mobileNo" type="tel" pattern="[0-9]*" placeholder="Continue with mobile number" class="bwc__sc-dh558f-21 fFQlzG" value="">
+                            <div id="phonepopupdiv">
+                                <div class="arrowleft" onclick="redirecttopopup()"><i class="fa fa-arrow-left" aria-hidden="true"></i></div>
+                                <div class="ordiv">
+                                    <label>Enter Password</label><br><br>
+                                    <input id="pwd" type="password" value="">
+                                </div>
+                                 <div>
+                                    <button class="btncontinue" id="btncontinuephone" onclick="hide()">Continue</button>
+                                </div>
                             </div>
-                            
-                            <span id="errorText" class="errortext"></span><br>
-                            <span id="errorText1" class="errortext"></span>   
-                            <span id="errorText3" class="errortext"></span>            
-                                                                      
-                                                        
-                            <div class="signupview" id="signupview">
-                                <button id="signupbtn" class="loginbtn" type="Submit">Continue</button> 
-                                <a class="exeusrlink" href="javascript:hideSignupPopup()">
-                                    <span class="exelink">Existing User? Log in</span>
-                                </a>  
-                            </div>                            
-                            <div class="newsignup" id="newsignup">
-                                <a href="https://in.bookmyshow.com/terms-and-conditions">
-                                    I agree to the Terms & Conditions & Privacy Policy
-                                </a>
-                            </div> 
                         </form>
                     </div>
                 </div>
@@ -75,13 +76,11 @@
                 </div>
             </div>
             <div class="loginBtn_container">
-                    <a href="javascript:showLoginPopup()" id="loginBtn">Sign in</a>
+                    <a href="javascript:showLoginPopup()" class="loginBtn" id="loginBtn">Sign in</a>
             </div>
-                   
         </header>
         <main>  
-            
-            <!--Image Slider-->
+        <!--Image Slider-->
             <div class="imageSliderContainer">
                 <div class="imageSliderBtn">
                     <button id="preve_imageBtn">
@@ -94,18 +93,8 @@
                 <div class="imageSliderList">                    
                 </div>                
             </div>
-            <!--Best Of Electronics-->
-            <div class="bestofElectronic_Container">
+            <div class="bestofElectronic_Container">                
                 <div class="bestofElectronic_list">
-                    <div class="bestofElectronic_items">
-                        <div class="bestofElectronic_bigText">
-                            Best Of Electronics
-                        </div>
-                        <a href="#" class="viewallBtn">View All</a>
-                        <div class="bestofElectronicmoreOption">
-                            <img src="https://rukminim1.flixcart.com/fk-p-flap/278/278/image/7593e7b6640822c1.jpg?q=90">
-                        </div>                        
-                    </div>
                     <div class="bestofElectronic_product_item">
                         
                     </div>

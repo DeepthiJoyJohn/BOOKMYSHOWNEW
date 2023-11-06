@@ -47,10 +47,10 @@
                                 <div class="arrowleft" onclick="redirecttopopup()"><i class="fa fa-arrow-left" aria-hidden="true"></i></div>
                                 <div class="ordiv">
                                     <label>Enter Password</label><br><br>
-                                    <input id="pwd" type="password" value="">
+                                    <input id="pwd" name="pwd" type="password" value="">
                                 </div>
                                  <div>
-                                    <button class="btncontinue" id="btncontinuephone" onclick="hide()">Continue</button>
+                                    <button class="btncontinue" id="btncontinuephone" onclick="loginaction()">Continue</button>
                                 </div>
                             </div>
                         </form>
@@ -102,6 +102,7 @@
             </div>            
         </main>
         <script src="js/javascript.js" type="module"></script>   
-        <script src="js/scripts.js"></script>         
+        <script src="js/scripts.js"></script>  
+        <script src="js/loginaction.js"></script>         
     </body> 
 </html>

@@ -1,13 +1,15 @@
 
-<cfcomponent displayname="Names" hint="ColdFusion Component for Names"> 
-	<cffunction name="retrieveNames"
-	hint="Gets all names from the database" access="remote">
-		<cfquery name="getNames" datasource="cftask">
-			select * from cftask12
+<cfcomponent> 
+	<cffunction name="checkuser" access="remote">
+		<cfargument name="mobileNo">
+		<cfargument name="password">
+		<cfquery name="checkuser" datasource="#application.datasoursename#">
+			SELECT userid
+			form user
+			WHERE
+			phone=<cfqueryparam value="#arguments.mobileNo#" cfsqltype="cf_sql_varchar">
+			AND pwd=<cfqueryparam value="#arguments.password#" cfsqltype="cf_sql_varchar">
 		</cfquery>
-   		<cfoutput><b>Table contents</b></cfoutput><br>
-   		<cfoutput query="getNames">#getNames.firstname# #getNames.lastName#<br></cfoutput><br> 
-   		<cfoutput><b>nth row firstname=#getNames.firstname[form.txtbox1]#</b></cfoutput><br>
 	</cffunction>
 </cfcomponent>
 

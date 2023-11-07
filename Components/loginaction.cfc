@@ -5,11 +5,12 @@
 		<cfargument name="password">
 		<cfquery name="checkuser" datasource="#application.datasoursename#">
 			SELECT userid
-			form user
+			from user
 			WHERE
-			phone=<cfqueryparam value="#arguments.mobileNo#" cfsqltype="cf_sql_varchar">
+			username=<cfqueryparam value="#arguments.mobileNo#" cfsqltype="cf_sql_varchar">
 			AND pwd=<cfqueryparam value="#arguments.password#" cfsqltype="cf_sql_varchar">
 		</cfquery>
+		<cfreturn checkuser.recordCount>
 	</cffunction>
 </cfcomponent>
 

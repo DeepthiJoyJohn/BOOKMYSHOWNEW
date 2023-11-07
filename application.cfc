@@ -7,7 +7,7 @@
 
 
     <cffunction name="onApplicationStart" returnType="boolean" output="false">
-        <cfset application.datasoursename="bookmyshow">
+        <cfset application.datasoursename="bookmyshownew">
         <cfreturn true>
     </cffunction>
 

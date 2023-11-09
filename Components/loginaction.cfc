@@ -1,4 +1,3 @@
-
 <cfcomponent> 
 	<cffunction name="checkuser" access="remote">
 		<cfargument name="mobileNo">

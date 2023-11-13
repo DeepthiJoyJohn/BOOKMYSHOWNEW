@@ -1,6 +1,7 @@
 $(document).ready(function () {
   document.getElementById("btncontinue").style.display="none";  
   document.getElementById("phonepopupdiv").style.display="none";  
+  document.getElementById("emailpopupdiv").style.display="none";  
   document.getElementById("btncontinue").setAttribute("disabled", "disabled");
 
 });
@@ -135,5 +136,10 @@ function hide(){
 function redirecttopopup(){
   document.getElementById("phonepopupdiv").style.display="none";
   document.getElementById("mainpopupdiv").style.display="block";
+  document.getElementById("emailpopupdiv").style.display="none";
 }
-
+function displayemailpopup(){
+  document.getElementById("mainpopupdiv").style.display="none";
+  document.getElementById("phonepopupdiv").style.display="none";
+  document.getElementById("emailpopupdiv").style.display="block";
+}

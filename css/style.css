@@ -549,3 +549,19 @@ a{
 .left{
     float:left;
 }
+.accdiv{
+    margin-left:200px;
+    width:1000px;
+    text-align: right;
+    position: absolute;
+}
+.accdiv img{
+    height:35px;
+  }
+.accdiv span{
+    color:white;
+    margin-left: 20px;
+}
+.popuplabel{
+    font-size: 16px;
+}

@@ -49,3 +49,17 @@ function loginaction(thisa){
     }
   });
 }
+
+function loginwithgoogle(){
+  $.ajax({
+    type: "POST",
+    url: 'Components/loginaction.cfc?method=loginwithgoogle',
+    cache: false,
+    success: function(data){      
+      var retval = $(data).find("string").text();
+      window.location.href=retval;
+      
+    }
+  });
+
+}

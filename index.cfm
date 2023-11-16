@@ -18,8 +18,8 @@
                             <cfoutput>
                                 <div id="mainpopupdiv">
                                     <div class="getstarted">Get Started <span class="close" onclick="closeLoginPopup()">&times;</span></div>
-                                    <div class="googlediv" onclick="loginwithgoogle()">
-                                        <span class="googlespan" >
+                                    <div class="googlediv">
+                                        <span class="googlespan">
                                             <img alt="google logo" src="//in.bmscdn.com/webin/common/icons/googlelogo.svg">
                                         </span>
                                         Continue with Google

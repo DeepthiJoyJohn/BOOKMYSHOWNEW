@@ -8,7 +8,7 @@ function extractStringFromWDDX(wddxData) {
 }
 
 function loginaction(thisa){ 
-  
+ 
     if(thisa=="phone"){
       var password=document.getElementById("pwd").value;
       var mobileNo=document.getElementById("mobileNo").value;
@@ -38,8 +38,8 @@ function loginaction(thisa){
     type: "POST",
     url: 'Components/loginaction.cfc?method=checkuser&mobileNo='+mobileNo+'&password='+password,
     cache: false,
-    success: function(data){
-      var retval = $(data).find("number").text();
+    success: function(data){      
+      var retval = $(data).find("number").text();      
       if(retval==1){
         window.location.href = "home.cfm";
       }else{

@@ -18,7 +18,7 @@
                             <cfoutput>
                                 <div id="mainpopupdiv">
                                     <div class="getstarted">Get Started <span class="close" onclick="closeLoginPopup()">&times;</span></div>
-                                    <div class="googlediv">
+                                    <div class="googlediv" onclick="loginwithgoogle()">
                                         <span class="googlespan">
                                             <img alt="google logo" src="//in.bmscdn.com/webin/common/icons/googlelogo.svg">
                                         </span>
@@ -98,7 +98,8 @@
                     <a href="javascript:showLoginPopup()" class="loginBtn" id="loginBtn">Sign in</a>
             </div>
         </header>
-        <main>  
+        <main> 
+        <cfoutput> 
         <!--Image Slider-->
             <div class="imageSliderContainer">
                 <div class="imageSliderBtn">
@@ -112,13 +113,26 @@
                 <div class="imageSliderList">                    
                 </div>                
             </div>
+            <cfinvoke component="BOOKMYSHOWNEW/Components/events" method="getEventsFromDb" returnvariable="resultEvents"></cfinvoke>
             <div class="bestofElectronic_Container">                
                 <div class="bestofElectronic_list">
                     <div class="bestofElectronic_product_item">
-                        
+                        <cfloop query="#resultEvents#">
+                            <div class="bestofElectronic_items" onclick="redirectToEventDetail(#resultEvents.eventid#)">
+                                <div class="bestofElectronic_image_Product">
+                                    <img src="#resultEvents.eventimg#"/>
+                                </div>
+                                <div class="bestofElectronicmoreOption">
+                                    <p class="bestofElectronicProduct_name">#resultEvents.eventname#</p>
+                                    
+                                    <p class="bestofElectronicProduct_brand">#resultEvents.eventtype#</p>
+                                </div>                        
+                            </div>	
+                        </cfloop>                        
                     </div>
                 </div>
-            </div>            
+            </div>   
+        </cfoutput>         
         </main>
         <script src="js/javascript.js" type="module"></script>   
         <script src="js/scripts.js"></script>  

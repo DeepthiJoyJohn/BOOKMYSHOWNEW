@@ -400,7 +400,7 @@ a{
 .bestofElectronic_items{
     background-color: white;
     min-width: 210px;
-    max-width: 210px;
+    max-width: 225px;
     height:310px;
     position: relative;
     display:flex;
@@ -429,6 +429,7 @@ a{
 }
 .bestofElectronic_image_Product{
    height:510;
+   width:220px;
    text-align: center;
    display: flex;
    align-items: center;  

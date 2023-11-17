@@ -6,6 +6,20 @@ function extractStringFromWDDX(wddxData) {
       return null; 
   }
 }
+function loginwithgoogle(){
+  
+  $.ajax({
+    type: "POST",
+    url: 'Components/loginaction.cfc?method=loginwithgoogle',
+    cache: false,
+    success: function(data){      
+      var retval = $(data).find("string").text();
+      window.location.href=retval;
+      
+    }
+  });
+
+}
 
 function loginaction(thisa){ 
  
@@ -36,8 +50,9 @@ function loginaction(thisa){
     
   $.ajax({
     type: "POST",
-    url: 'Components/loginaction.cfc?method=checkuser&mobileNo='+mobileNo+'&password='+password,
+    url: 'Components/loginaction.cfc?method=checkuser',
     cache: false,
+    data:{mobileNo:mobileNo,password:password},
     success: function(data){      
       var retval = $(data).find("number").text();      
       if(retval==1){
@@ -50,16 +65,8 @@ function loginaction(thisa){
   });
 }
 
-function loginwithgoogle(){
-  $.ajax({
-    type: "POST",
-    url: 'Components/loginaction.cfc?method=loginwithgoogle',
-    cache: false,
-    success: function(data){      
-      var retval = $(data).find("string").text();
-      window.location.href=retval;
-      
-    }
-  });
-
+function redirectToEventDetail(eventid){
+  window.location.href="eventDesc.cfm?eventid="+eventid
 }
+
+

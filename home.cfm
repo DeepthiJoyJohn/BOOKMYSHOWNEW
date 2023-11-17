@@ -1,4 +1,4 @@
-<html>
+ <html>
     <head>
         <title> Movie Tickets, Plays, Sports, Events &amp; Cinemas near Delhi-NCR - BookMyShow Delhi-NCR.</title>
         <link rel="shortcut icon" href="Images/Icon/icon1.png">
@@ -94,12 +94,14 @@
                 <div class="imageSliderList">                    
                 </div>                
             </div>
-            <div class="bestofElectronic_Container">                
-                <div class="bestofElectronic_list">
-                    <div class="bestofElectronic_product_item">
-                        
+            <div class="bestofElectronic_Container">  
+                <a href="filmdesc.cfm">              
+                    <div class="bestofElectronic_list">                    
+                        <div class="bestofElectronic_product_item">
+                            
+                        </div>                    
                     </div>
-                </div>
+                </a>
             </div>            
         </main>
         <script src="js/javascript.js" type="module"></script>   

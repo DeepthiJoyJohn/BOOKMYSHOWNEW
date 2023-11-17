@@ -6,9 +6,23 @@ function extractStringFromWDDX(wddxData) {
       return null; 
   }
 }
+function loginwithgoogle(){
+  
+  $.ajax({
+    type: "POST",
+    url: 'Components/loginaction.cfc?method=loginwithgoogle',
+    cache: false,
+    success: function(data){      
+      var retval = $(data).find("string").text();
+      window.location.href=retval;
+      
+    }
+  });
+
+}
 
 function loginaction(thisa){ 
-  
+ 
     if(thisa=="phone"){
       var password=document.getElementById("pwd").value;
       var mobileNo=document.getElementById("mobileNo").value;
@@ -36,10 +50,11 @@ function loginaction(thisa){
     
   $.ajax({
     type: "POST",
-    url: 'Components/loginaction.cfc?method=checkuser&mobileNo='+mobileNo+'&password='+password,
+    url: 'Components/loginaction.cfc?method=checkuser',
     cache: false,
-    success: function(data){
-      var retval = $(data).find("number").text();
+    data:{mobileNo:mobileNo,password:password},
+    success: function(data){      
+      var retval = $(data).find("number").text();      
       if(retval==1){
         window.location.href = "home.cfm";
       }else{
@@ -50,16 +65,8 @@ function loginaction(thisa){
   });
 }
 
-function loginwithgoogle(){
-  $.ajax({
-    type: "POST",
-    url: 'Components/loginaction.cfc?method=loginwithgoogle',
-    cache: false,
-    success: function(data){      
-      var retval = $(data).find("string").text();
-      window.location.href=retval;
-      
-    }
-  });
-
+function redirectToEventDetail(eventid){
+  window.location.href="eventDesc.cfm?eventid="+eventid
 }
+
+

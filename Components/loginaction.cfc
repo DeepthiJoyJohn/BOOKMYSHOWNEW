@@ -1,15 +1,21 @@
 <cfcomponent> 
 	<cffunction name="checkuser" access="remote">
-		<cfargument name="mobileNo">
-		<cfargument name="password">
-		<cfquery name="checkuser" datasource="#application.datasoursename#">
-			SELECT userid
+		<cfargument name="mobileNo" required="true">
+		<cfargument name="password" required="true">
+		<cfquery name="qcheckuser" datasource="#application.datasoursename#">
+			SELECT userid,userroleid,username
 			from user
 			WHERE
 			username=<cfqueryparam value="#arguments.mobileNo#" cfsqltype="cf_sql_varchar">
 			AND pwd=<cfqueryparam value="#arguments.password#" cfsqltype="cf_sql_varchar">
 		</cfquery>
-		<cfreturn checkuser.recordCount>
+		<cfif qcheckuser.recordCount GT 0>
+			<cfloop query="qcheckuser">
+				<cfset session.username = "#qcheckuser.username#">
+				<cfset session.userrole = "#qcheckuser.userroleid#">
+			</cfloop>		
+		</cfif>
+		<cfreturn qcheckuser.recordCount>
 	</cffunction>
 
 	<cffunction name="loginwithgoogle" access="remote">

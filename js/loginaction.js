@@ -6,8 +6,7 @@ function extractStringFromWDDX(wddxData) {
       return null; 
   }
 }
-function loginwithgoogle(){
-  
+function loginwithgoogle(){  
   $.ajax({
     type: "POST",
     url: 'Components/loginaction.cfc?method=loginwithgoogle',
@@ -18,11 +17,10 @@ function loginwithgoogle(){
       
     }
   });
-
 }
 
-function loginaction(thisa){ 
- 
+function loginaction(thisa){  
+  
     if(thisa=="phone"){
       var password=document.getElementById("pwd").value;
       var mobileNo=document.getElementById("mobileNo").value;
@@ -34,11 +32,11 @@ function loginaction(thisa){
         errorspanphone.textContent="Phone No should be Number!!!";
         return false; 
       }
-    }else if(thisa=="email"){
+    }else if(thisa=="email"){      
       var password=document.getElementById("pwdemail").value;
       var mobileNo=document.getElementById("email").value;
       var errorspanphone=document.getElementById("errorspanemail");
-      var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+      var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;     
       if(password=="" || mobileNo==""){
         errorspanphone.textContent="Password and Email cant be null!!!";
         return false;
@@ -47,16 +45,17 @@ function loginaction(thisa){
         return false;
       }   
     }
-    
+ 
   $.ajax({
     type: "POST",
     url: 'Components/loginaction.cfc?method=checkuser',
     cache: false,
     data:{mobileNo:mobileNo,password:password},
-    success: function(data){      
-      var retval = $(data).find("number").text();      
+    success: function(response){    
+      alert(response)  ;
+      var retval = $(response).find("number").text();      
       if(retval==1){
-        window.location.href = "home.cfm";
+        window.location.href = "index.cfm";
       }else{
         errorspanphone.textContent="Wrong Credentials!!!"
       }

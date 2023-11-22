@@ -26,8 +26,7 @@
                             <span id="errorText" class="errortext"></span><br>
                             <div>
                                 <button class="btncontinue" id="btncontinue" onclick="hide()">Continue</button>
-                            </div>
-                            
+                            </div>                            
                             <div class="newsignup" id="newsignup">
                                 <a href="https://in.bookmyshow.com/terms-and-conditions">
                                     I agree to the Terms & Conditions & Privacy Policy
@@ -80,14 +79,26 @@
             
         </div>
     </div>
+    
     <cfif session.username EQ "">
         <div class="loginBtn_container">
             <a href="javascript:showLoginPopup()" class="loginBtn" id="loginBtn">Sign in</a>             
         </div>
     <cfelse>
-        <div class="accdiv">
-            <img src="//in.bmscdn.com/m6/images/my-profile/bms-user.png" alt="Profile"><span>Hi,Guest</span>
-        </div>
+        <div class="more_link">   
+                <span class="imgGuestDiv">             
+                    <img src="//in.bmscdn.com/m6/images/my-profile/bms-user.png" alt="Profile" class="imgGuest"><span class="imgGuestSpan">Hi,Guest</span> 
+                    <i class="fa solid fa-angle-down icon_more" aria-hidden="true"></i>
+                </span>
+                <div class="more_menu">
+                    <div class="more_menu_list">
+                        <div class="menu_nav_link">
+                            <button class="jwbLgg" onclick="logout()">Sign Out</button>                                               
+                        </div>
+                    </div>
+                </div>
+            </div>   
     </cfif>
-</header>        
+</header> 
+     
     

@@ -68,4 +68,8 @@ function redirectToEventDetail(eventid){
   window.location.href="eventDesc.cfm?eventid="+eventid
 }
 
+function displayLogOutDiv(){
+	window.open("index.cfm");
+}
+
 

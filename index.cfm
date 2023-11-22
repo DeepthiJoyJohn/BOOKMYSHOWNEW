@@ -36,8 +36,7 @@
                                     <img src="#resultEvents.eventimg#"/>
                                 </div>
                                 <div class="bestofElectronicmoreOption">
-                                    <p class="bestofElectronicProduct_name">#resultEvents.eventname#</p>
-                                    
+                                    <p class="bestofElectronicProduct_name">#resultEvents.eventname#</p>                                    
                                     <p class="bestofElectronicProduct_brand">#resultEvents.eventtype#</p>
                                 </div>                        
                             </div>	

@@ -171,6 +171,7 @@ a{
    
 }
 
+
 .login_menu_list{
     max-width: 100%;
     background-color: white;
@@ -223,32 +224,33 @@ a{
     color:white;    
     font-weight:550;   
     cursor: pointer; 
-    margin:0px 10px;
+    margin:30px 50px;
     position:relative;
     z-index: 20;
 }
 .more_menu{
     position:absolute;
-    height:220px;
+    height:70px;
     content:"";
     background-color:transparent;
-    width:200px;
+    width:300px;
     transform:translate(-35%);
     padding-top:10px;
+    margin-left:200px;
+    margin-top:30px;
     display:none;
 }
 .more_link:hover .more_menu{
     display:block;
 
 }
-.more_menu_list{
-    background-color:white;
-    height:100%;
-    box-shadow: -5px -0px 5px rgba(0,0,0,0.1),5px 5px 5px rgba(0,0,0,0.1);
-    padding:20px 20px;
-    display:flex;
-    flex-direction:column;
-    justify-content:space-between;
+.exSHsT {
+    width: 100%;
+    border-radius: 50%;
+}
+.more_menu_list{    
+    background-color: white;
+    position:relative;    
 }
 .more_menu_list i{
     color:#2874F0;
@@ -379,9 +381,13 @@ a{
     transform: scale(1.3);
 }
 .bestofElectronic_Container{
-    height:510px;
-    
+    height:510px;    
     width:99%;
+}
+.bestofElectronic_Container1{
+    height:510px;    
+    width:99%;
+    margin-left:100px;
 }
 .bestofElectronicmoreOption{
     height:100px;  
@@ -402,6 +408,18 @@ a{
     min-width: 210px;
     max-width: 225px;
     height:310px;
+    position: relative;
+    display:flex;
+    /* justify-content: center; */
+    align-items: center;
+    flex-direction: column;
+    
+}
+.bestofElectronic_items1{
+    background-color: rgb(10, 10, 10);
+    min-width: 210px;
+    max-width: 225px;
+    height:450px;
     position: relative;
     display:flex;
     /* justify-content: center; */
@@ -450,6 +468,13 @@ a{
     font-size: 15px;
     padding: 5px;
     letter-spacing: 0.5px;  
+    
+}
+.bestofElectronicProduct_name1{
+    font-size: 15px;
+    padding: 5px;
+    letter-spacing: 0.5px; 
+    color:#f1f3f6;
     
 }
 .bestofElectronicProduct_discount{
@@ -555,14 +580,105 @@ a{
     width:1000px;
     text-align: right;
     position: absolute;
+    cursor: pointer;
 }
 .accdiv img{
     height:35px;
   }
-.accdiv span{
+.imgGuestSpan{
     color:white;
-    margin-left: 20px;
+    margin-left:5px;  
+    
 }
 .popuplabel{
     font-size: 16px;
 }
+.imgGuest{
+    height:35px;  
+}
+.imgGuestDiv{
+    float:right;
+    margin-left:200px;
+    margin-right: -300px;
+}
+
+.jwbLgg {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        border-radius: 4px;
+        text-decoration: none;
+        cursor: pointer;
+        outline: none;
+        transition: opacity 0.25s ease 0s;
+        position: relative;
+        width: 100%;
+        margin: 0px;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 1.4;
+        background-color: transparent;
+        border: 1px solid rgb(248, 68, 100);
+        color: rgb(248, 68, 100);
+    }
+    .eventDescBody{
+        background-color: rgb(37, 36, 36);
+    }
+    .details{
+        display: flex;        
+    }
+    .detailssub{
+        color:#ffff;
+        margin-left:30px;
+        margin-top:50px;
+        font-size: 40px;
+        font-weight: bolder;
+        
+    }
+    .detailssubratings{
+        color:#ffff;
+        margin-left:30px;
+        margin-top:50px;
+        font-size: 25px;
+        font-weight: bolder;
+    }
+    .detailssubratings1{
+        color:#ffff;
+        margin-left:30px;
+        margin-top:50px;
+        font-size: 20px;
+        font-weight: bolder;
+    }
+    .red{
+        color:rgb(248, 68, 100);
+        margin-right:10px;
+    }
+    .bGKFux {
+        padding: 0px;
+        border: 1px solid rgb(248, 68, 100);
+        color: rgb(255, 255, 255);
+        background-color: rgb(248, 68, 100);
+        border-radius: 8px;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 8px;
+        width: 220px;
+        height:45px;
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;         
+        top:100px;
+        
+    }
+    .diGRHt {
+        background-color: rgb(229, 229, 229);
+        color: rgb(0, 0, 0);
+        padding: 2px 8px;
+        border-radius: 2px;        
+        margin-top: 8px;
+        font-size: 12px;
+        width: fit-content;
+        margin:10px;
+              
+    }
+    .flex{
+        display: flex;
+    }
+    

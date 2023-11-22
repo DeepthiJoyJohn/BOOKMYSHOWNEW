@@ -28,5 +28,12 @@
 		<cfset local.url="#authURL#?client_id=#clientID#&redirect_uri=#redirectURI#&scope=#scope#&response_type=#responseType#">
 		<cfreturn local.url>
 	</cffunction>
+
+	<cffunction name="clearSessionData" access="remote" returntype="string">        
+        <cfset session.username="">
+        <cfset session.userrole="">   
+        <cfreturn "1"> 
+    </cffunction>
+
 </cfcomponent>
 

@@ -9,30 +9,58 @@
     </head>
     <cfoutput>
         
-        <body> 
+        <body>  
             <cfinclude template="outLook.cfm"> 
             <cfinvoke component="BOOKMYSHOWNEW/Components/events" method="getEventsFromDb" returnvariable="resultEvents">
                     <cfinvokeargument name="eventId" value="#url.eventid#">
             </cfinvoke>
-            <main>                
-                <div class="bestofElectronic_Container">  
+            <main class="eventDescBody"> 
+                           
+                <div class="bestofElectronic_Container1">  
                     <div class="bestofElectronic_list">
                         <div class="bestofElectronic_product_item">
                             <cfloop query="#resultEvents#">
-                                <div class="bestofElectronic_items" onclick="redirectToEventDetail(#resultEvents.eventid#)">
-                                    <div class="bestofElectronic_image_Product">
-                                        <img src="#resultEvents.eventimg#"/>
-                                    </div>
-                                    <div class="bestofElectronicmoreOption">
-                                        <p class="bestofElectronicProduct_name">#resultEvents.eventname#</p>
-                                        
-                                        <p class="bestofElectronicProduct_brand">#resultEvents.eventtype#</p>
-                                    </div>                        
-                                </div>	
+                                <div class="details">
+                                    <div class="bestofElectronic_items1" onclick="redirectToEventDetail(#resultEvents.eventid#)">
+                                        <div class="bestofElectronic_image_Product">
+                                            <img src="#resultEvents.eventimg#"/>
+                                        </div>
+                                        <div class="bestofElectronicmoreOption">
+                                            <p class="bestofElectronicProduct_name1">In Cinemas</p>
+                                        </div>                                                               
+                                    </div>	
+                                    <div class="detailssub">
+                                        #resultEvents.eventname#
+                                        <div class="detailssubratings">                                            
+                                            <i class="fa fa-star red" aria-hidden="true"></i>#resultEvents.eventratings#/10
+                                        </div>
+                                        <div class="FLEX">
+                                            <div class="diGRHt">
+                                                #resultEvents.eventdimension#
+                                            </div>
+                                            <div class="diGRHt">
+                                                #resultEvents.eventlanguage#
+                                            </div>    
+                                        </div>
+                                        <div class="FLEX">
+                                            <div class="detailssubratings1">
+                                            #resultEvents.Hours#h #resultEvents.Minutes#m . #resultEvents.eventtype# .#resultEvents.releasedate#
+                                            </div>                                        
+                                        </div>                                    
+                                        <button data-phase="postRelease" class="bGKFux">
+                                            <div>
+                                                <span>
+                                                    Book tickets
+                                                </span>
+                                            </div>
+                                        </button>
+                                    </div>                                     
+                                </div>
                             </cfloop>                        
                         </div>
                     </div>
-                </div>            
+                </div>    
+                       
             </main>
             <script src="js/javascript.js" type="module"></script>   
             <script src="js/scripts.js"></script>  

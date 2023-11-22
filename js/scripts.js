@@ -118,13 +118,13 @@ document.getElementById("loginform").onsubmit = function(event) {
   }
 };
 function logout(){  
+  
   $.ajax({
-    type: "GET",
-    url: 'Components/SessionManager.cfc?method=clearSessionData',
+    type: "POST",
+    url: 'Components/loginaction.cfc?method=clearSessionData',
     cache: false,
-    success: function(data){
-      window.location.href = "index.cfm";
-       
+    success: function(data){      
+      window.location.href = "index.cfm";       
     },
   });
 }

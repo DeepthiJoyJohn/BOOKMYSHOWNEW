@@ -71,8 +71,5 @@ function renderImageSlider(){
 }
 setInterval(renderImageSlider,5000)
 
-function redirectToTicketBooking(){
-	alert("fd");
-}
 
 

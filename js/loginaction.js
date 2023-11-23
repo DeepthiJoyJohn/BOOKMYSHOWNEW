@@ -6,6 +6,10 @@ function extractStringFromWDDX(wddxData) {
       return null; 
   }
 }
+function redirectToTicketBooking(){
+	window.location.href="bookTickets.cfm";
+}
+
 function loginwithgoogle(){  
   $.ajax({
     type: "POST",

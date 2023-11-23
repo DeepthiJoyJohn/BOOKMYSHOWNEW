@@ -1,0 +1,70 @@
+.datecontainer {
+  display: flex;
+  flex-direction: column;
+}
+.date-list {
+  background: #fff;
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  list-style-type: none;
+  overflow-x: scroll;
+  text-align: center;
+  white-space: nowrap;
+  z-index: 10;
+}
+.date-list .date-item {
+  box-sizing: border-box;
+  flex: 1;
+  height: 72px;
+  max-width: 56px;
+  min-width: 56px;
+  padding: 8px 0;
+  position: relative;
+  text-align: center;
+  z-index: 10;
+}
+.date-list .date-item.active {
+  background: #eb4e62;
+}
+.date-list .date-item .day, .touch .date-bar .date-list-container .date-list .date-item .month {
+  color: #666;
+  display: block;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 10px;
+  line-height: 16px;
+  text-transform: uppercase;
+}
+.touch .date-bar .date-list-container .date-list .date-item .date {
+  color: #1a1a1a;
+  display: block;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 22px;
+  margin-top: 1px;
+}
+.month {
+  color: #666;
+  display: block;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 10px;
+  line-height: 16px;
+  text-transform: uppercase;
+}
+.name-section {
+  height: 22px;
+  margin-top: 10px;
+  overflow: hidden;
+}
+.name-section .name {
+  display: block;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 19px;
+  line-height: 22px;
+  overflow: hidden;
+  text-align: left;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

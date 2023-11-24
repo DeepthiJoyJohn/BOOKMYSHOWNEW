@@ -47,7 +47,11 @@
                                             #resultEvents.Hours#h #resultEvents.Minutes#m . #resultEvents.eventtype# .#resultEvents.releasedate#
                                             </div>                                        
                                         </div>                                    
+<<<<<<< HEAD
                                         <button data-phase="postRelease" class="bGKFux" onclick="redirectToTicketBooking()">
+=======
+                                        <button data-phase="postRelease" class="bGKFux">
+>>>>>>> ba8775756ec6afa5c201db1fec2b4df472824e41
                                             <div>
                                                 <span>
                                                     Book tickets

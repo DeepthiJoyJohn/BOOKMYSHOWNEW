@@ -10,55 +10,75 @@
     </head>
     <cfoutput>        
         <body>
-            <div class="info">  
-                <div class="name-section">
-                    <span class="name">Tiger 3</span>
-                </div>  
-            </div>         
-            <div class="datecontainer">
-                <ul class="date-list">
-                    <li class="date-item active">
-                        <span class="day"> Thu</span>
-                        <span class="date"> 23</span>
-                        <span class="month">Nov</span>
-                    </li>
-                    <li class="date-item ">
-                        <span class="day"> Fri</span>
-                        <span class="date"> 24</span>
-                        <span class="month">Nov</span>
-                    </li>
-                    <li class="date-item ">
-                        <span class="day"> Sat</span>
-                        <span class="date"> 25</span>
-                        <span class="month">Nov</span>
-                    </li>
-                    <li class="date-item ">
-                        <span class="day"> Sun</span>
-                        <span class="date"> 26</span>
-                        <span class="month">Nov</span>
-                    </li>
-                    <li class="date-item ">
-                        <span class="day"> Mon</span>
-                        <span class="date"> 27</span>
-                        <span class="month">Nov</span>
-                    </li>
-                    <li class="date-item ">
-                        <span class="day"> Tue</span>
-                        <span class="date"> 28</span>
-                        <span class="month">Nov</span>
-                    </li>
-                    <li class="date-item ">
-                        <span class="day"> Wed</span>
-                        <span class="date"> 29</span>
-                        <span class="month">Nov</span>
-                    </li>
-                    <li class="date-item ">
-                        <span class="day"> Thu</span>
-                        <span class="date"> 30</span>
-                        <span class="month">Nov</span>
-                    </li>
-                </ul>
-            </div>
+            <cfinclude template="outLook.cfm"> 
+            <section class="movie-details">
+                <div class="fix-height-div">
+                    <div class="top-section-container">
+                        <div class="movie-details-container"> 
+                            <div class="text-details">   
+                                <h1>
+                                    <div class="cinema-name-container">                    
+                                        <a href="toeventdetailspage" class="cinema-name-container">
+                                            Tiger-Hindi									
+                                        </a>
+                                    </div> 
+                                </h1> 
+                            </div>
+                        </div> 
+                    </div> 
+                </div>    
+                 
+                <div class="datecontainer">
+                    <ul class="date-list">
+                        <li class="date-item active">
+                            <span class="day"> Thu</span>
+                            <span class="date"> 23</span>
+                            <span class="month">Nov</span>
+                        </li>
+                        <li class="date-item ">
+                            <span class="day"> Fri</span>
+                            <span class="date"> 24</span>
+                            <span class="month">Nov</span>
+                        </li>
+                        <li class="date-item ">
+                            <span class="day"> Sat</span>
+                            <span class="date"> 25</span>
+                            <span class="month">Nov</span>
+                        </li>
+                        <li class="date-item ">
+                            <span class="day"> Sun</span>
+                            <span class="date"> 26</span>
+                            <span class="month">Nov</span>
+                        </li>
+                        <li class="date-item ">
+                            <span class="day"> Mon</span>
+                            <span class="date"> 27</span>
+                            <span class="month">Nov</span>
+                        </li>
+                        <li class="date-item ">
+                            <span class="day"> Tue</span>
+                            <span class="date"> 28</span>
+                            <span class="month">Nov</span>
+                        </li>
+                        <li class="date-item ">
+                            <span class="day"> Wed</span>
+                            <span class="date"> 29</span>
+                            <span class="month">Nov</span>
+                        </li>
+                        <li class="date-item ">
+                            <span class="day"> Thu</span>
+                            <span class="date"> 30</span>
+                            <span class="month">Nov</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="wrapper">
+                    <div class="container">
+                        <use xlink:href="/icons/movies-icons.svg##icon-heart"></use>
+                    </div>
+                </div>
+                
+            </section>
             <main class="eventDescBody"> 
                            
                        

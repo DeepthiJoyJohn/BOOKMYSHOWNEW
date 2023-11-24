@@ -68,3 +68,64 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+.movie-details {
+  position: relative;
+  text-align: left;
+  display: inline-block;
+  width: 100%;
+  box-sizing: border-box;
+  background: #333545;
+  color: #999;
+  z-index: 3;
+}
+.movie-details .fix-height-div {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 30px 20px 15px;
+  box-sizing: border-box;
+}
+.movie-details .top-section-container {
+  zoom: 1;
+  position: relative;
+  min-width: 320px;
+  max-width: 1280px;
+  margin: 0 auto;
+  height: 15%;
+}
+.movie-details-container .text-details {
+  position: relative;
+  box-sizing: border-box;
+  zoom: 1;
+}
+.cinema-name-container{
+  color: #fff;
+  font-size: 45px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: lighter;
+}
+button, input[type=button] {
+  width: auto;
+  overflow: visible;
+}
+.prev {
+  position: absolute;
+  top: 0;
+  left: -40px;
+  width: 40px;
+  height: 40px;
+  padding: 10px;
+  background: 0 0;
+  border: none;
+  opacity: .5;
+}
+.wrapper {
+  padding: 0 15px;
+}
+.container {
+  zoom: 1;
+  background: #fff;
+  padding: 0 0 15px;
+  position: relative;
+  min-height: 350px;
+}

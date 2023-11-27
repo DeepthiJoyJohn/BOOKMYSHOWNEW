@@ -12,5 +12,16 @@
 		</cfquery>
 		<cfreturn qGetEvents>
 	</cffunction>	
+	
+	<cffunction name="getDateRangeOfEvents" access="public" returntype="query">
+		<cfargument name="eventId">
+		<cfquery name="qDateRangeOfEvents" datasource="#application.datasoursename#">
+			SELECT startdate
+			FROM event			
+			WHERE eventid=<cfqueryparam value="#arguments.eventId#" cfsqltype="cf_sql_integer">	
+			AND startdate BETWEEN startdate AND enddate AND (startdate>=NOW())		
+		</cfquery>
+		<cfreturn qDateRangeOfEvents>
+	</cffunction>
 </cfcomponent>
 

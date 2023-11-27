@@ -71,8 +71,3 @@ function renderImageSlider(){
 }
 setInterval(renderImageSlider,5000)
 
-
-<<<<<<< HEAD
-
-=======
->>>>>>> ba8775756ec6afa5c201db1fec2b4df472824e41

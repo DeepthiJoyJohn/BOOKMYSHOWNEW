@@ -12,7 +12,7 @@
         <body>  
             <cfinclude template="outLook.cfm"> 
             <cfinvoke component="BOOKMYSHOWNEW/Components/events" method="getEventsFromDb" returnvariable="resultEvents">
-                    <cfinvokeargument name="eventId" value="#url.eventid#">
+                    <cfinvokeargument name="eventId" value="#session.eventid#">
             </cfinvoke>
             <main class="eventDescBody"> 
                            
@@ -46,12 +46,8 @@
                                             <div class="detailssubratings1">
                                             #resultEvents.Hours#h #resultEvents.Minutes#m . #resultEvents.eventtype# .#resultEvents.releasedate#
                                             </div>                                        
-                                        </div>                                    
-<<<<<<< HEAD
-                                        <button data-phase="postRelease" class="bGKFux" onclick="redirectToTicketBooking()">
-=======
-                                        <button data-phase="postRelease" class="bGKFux">
->>>>>>> ba8775756ec6afa5c201db1fec2b4df472824e41
+                                        </div>  
+                                        <button data-phase="postRelease" class="bGKFux" onclick="redirectToTicketBooking(#resultEvents.eventid#)">
                                             <div>
                                                 <span>
                                                     Book tickets

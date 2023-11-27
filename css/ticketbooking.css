@@ -1,3 +1,6 @@
+body {
+  background-color: #f8f7f7;
+}
 .datecontainer {
   display: flex;
   flex-direction: column;
@@ -6,8 +9,7 @@
   background: #fff;
   border-bottom: 1px solid #ccc;
   display: flex;
-  list-style-type: none;
-  overflow-x: scroll;
+  list-style-type: none;  
   text-align: center;
   white-space: nowrap;
   z-index: 10;
@@ -128,4 +130,174 @@ button, input[type=button] {
   padding: 0 0 15px;
   position: relative;
   min-height: 350px;
+}
+
+.attributes-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 16px;
+  cursor: default;
+  border-bottom: 1px solid #f2f2f2;  
+ 
+  margin-top:10px;
+  height:5px;
+  background-color: #fff;
+}
+
+.offer-details-container.legends-section {
+  margin-bottom: 0;
+}
+
+.attributes-container .legends-container {
+  display: flex;
+}
+
+.attributes-container .legends-container .showtimes-legend {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+}
+.legend-icon {
+  padding: 4px;
+  border-radius: 4px;
+  background-color: #4abd5d;
+  margin-right: 8px;
+}
+.legend-icon.fast {
+  background-color: #f60;
+}
+.__subtitle {
+  position: relative;
+  border: 0.8px solid #4abd5d;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: .5px;
+  height: 12px;
+  justify-content: center;
+  display: flex;
+  padding: 1px 1px 0;
+  align-items: center;
+  width: 22px;
+}
+.legend-text {
+  color: #717171;
+  text-transform: uppercase;
+  font-size: 10px;
+}
+ul .list {
+  zoom: 1;
+  border-bottom: 1px solid #eff1f3;
+  padding: 13px 20px;
+  display: flex;
+  flex-direction: row;
+  background-color: #fff;
+}
+.unpaid-mticket-wrapper {
+  margin-top: 10px;
+  float: left;
+  width: 100%;
+}
+
+.__mticket-info {
+  float: left;
+  margin-left: -4px;
+  margin: 5px 15px 0 -4px;
+  cursor: default;
+  color: #49ba8e;
+  font-size: 12px;
+}
+.__mticket-info .icon {
+  cursor: default;
+  display: inline-block;
+  width: 22px;
+  height: 20px;
+}
+.icon i {
+  fill: #49ba8e;
+  vertical-align: middle;
+  margin-top: -3px;
+}
+.__fnb-info {
+  float: left;
+  margin: 5px 15px 0 -4px;
+  cursor: default;
+  color: #ffa426;
+  font-size: 12px;
+  margin-left: 10px;
+}
+.info-section {
+  display: flex;
+  margin-left: 6px;
+  float: left;
+  cursor: pointer;
+}
+
+.venue-info-text {
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 16px;
+  text-transform: uppercase;
+  color: #7d7d7d;
+  margin-left: 4px;
+}
+
+.venue-info-icon {
+  width: 16px;
+  height: 16px;
+}
+.showtime-pill-container {
+  margin: 8px;
+  width: calc(100% / 3 - 16px);
+  max-width: 110px;
+}
+.showtime-pill {
+  border: 1px solid #999;
+  color: #4abd5d;
+  padding: 4px;
+  border-radius: 4px;
+  width: 100%;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+}
+.__text {
+  margin: 0 auto;
+}
+.__details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0 2px;
+  height: 14px;
+}
+.showtime-pill-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.venue-flags {
+  margin-bottom: 0;
+  padding: 8px 0 0;
+  margin-left: 118px;
+  position: absolute;
+  margin-top:30px;
+}
+
+.venue-flags .gold-icon {
+  width: 7px;
+  height: 7px;
+  background: #ffc610;
+  border-radius: 50%;
+}
+.venue-flags-details {
+  vertical-align: middle;
+  margin: 0 8px;
+  color: #6c6c6c;
 }

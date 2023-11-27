@@ -11,7 +11,7 @@
     <body>
         <cfinclude template="outLook.cfm">   
         <main> 
-        <cfoutput>        
+        <cfoutput>     
             <div class="imageSliderContainer">
                 <div class="imageSliderBtn">
                     <button id="preve_imageBtn">

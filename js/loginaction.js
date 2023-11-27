@@ -6,6 +6,10 @@ function extractStringFromWDDX(wddxData) {
       return null; 
   }
 }
+function redirectToTicketBooking(){
+	window.location.href="bookTickets.cfm";
+}
+
 function loginwithgoogle(){  
   $.ajax({
     type: "POST",
@@ -65,7 +69,23 @@ function loginaction(thisa){
 }
 
 function redirectToEventDetail(eventid){
-  window.location.href="eventDesc.cfm?eventid="+eventid
+  $.ajax({
+    type: "POST",
+    url: 'Components/loginaction.cfc?method=setEventSession',
+    cache: false,
+    data:{eventId:eventid},
+    success: function(response){   
+          
+      var retval = $(response).find("string").text();      
+      if(retval==1){
+        window.location.href="eventDesc.cfm"
+      }else{
+       
+      }
+      
+    }
+  });
+  
 }
 
 function displayLogOutDiv(){

@@ -71,4 +71,3 @@ function renderImageSlider(){
 }
 setInterval(renderImageSlider,5000)
 
-

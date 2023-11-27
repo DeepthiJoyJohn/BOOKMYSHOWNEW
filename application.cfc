@@ -1,8 +1,8 @@
 <cfcomponent>    
     <cfset this.name = "BOOKMYSHOWNEW"> 
-    <cfset this.applicationTimeout = createTimeSpan(0, 0, 30, 0)> 
+    <cfset this.applicationTimeout = createTimeSpan(0, 0, 60, 0)> 
     <cfset this.sessionManagement = true> <!--- Enable session management --->
-    <cfset this.sessionTimeout = createTimeSpan(0, 0, 10, 0)> 
+    <cfset this.sessionTimeout = createTimeSpan(0, 0, 50, 0)> 
     <cffunction name="onApplicationStart" returnType="boolean" output="false">
         <cfset application.datasoursename="bookmyshownew">
         <cfreturn true>

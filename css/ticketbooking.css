@@ -24,9 +24,16 @@ body {
   position: relative;
   text-align: center;
   z-index: 10;
+  cursor: pointer;
 }
 .date-list .date-item.active {
   background: #eb4e62;
+}
+.date-item:hover{  
+    color:red;
+}
+.date-item.active:hover{
+  color:black;
 }
 .date-list .date-item .day, .touch .date-bar .date-list-container .date-list .date-item .month {
   color: #666;
@@ -301,3 +308,39 @@ ul .list {
   margin: 0 8px;
   color: #6c6c6c;
 }
+.prev {
+  position: absolute;
+  top: 0;
+  left: -40px;
+  width: 40px;
+  height: 40px;
+  padding: 10px;
+  background: 0 0;
+  border: none;
+  opacity: .5;
+}
+.btnDateArrow{
+  background-color: #fff;
+  border:none;
+  size:15px;
+  width:25px;
+  cursor: pointer;
+}
+.lg{
+  font-size: 48px;
+}
+#preBtn {
+  color:#c5bebe;
+}
+#preBtn1 {
+  color:#c5bebe;
+}
+
+#preBtn1:hover{
+  color: #867e7e;
+}
+
+#preBtn:hover{
+  color: #867e7e;
+}
+

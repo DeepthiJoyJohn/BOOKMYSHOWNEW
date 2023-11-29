@@ -13,15 +13,27 @@
 		<cfreturn qGetEvents>
 	</cffunction>	
 	
-	<cffunction name="getDateRangeOfEvents" access="public" returntype="query">
-		<cfargument name="eventId">
+	<cffunction name="getDateRangeOfEvents" access="public" returntype="array">
+		<cfargument name="eventId">		
 		<cfquery name="qDateRangeOfEvents" datasource="#application.datasoursename#">
-			SELECT startdate
-			FROM event			
-			WHERE eventid=<cfqueryparam value="#arguments.eventId#" cfsqltype="cf_sql_integer">	
-			AND startdate BETWEEN startdate AND enddate AND (startdate>=NOW())		
+			SELECT DATEDIFF(enddate,startdate) AS DateDifference,startdate,enddate
+			FROM EVENT
+			WHERE eventid=<cfqueryparam value="#arguments.eventId#" cfsqltype="cf_sql_integer">
 		</cfquery>
-		<cfreturn qDateRangeOfEvents>
+		<cfset local.arrayOfDates = []>
+		<cfloop query="qDateRangeOfEvents">
+			<cfset local.startdate=qDateRangeOfEvents.startdate>
+			<cfset local.enddate=qDateRangeOfEvents.enddate>
+			<cfset local.DateDifference=qDateRangeOfEvents.DateDifference>				
+		</cfloop>
+		<cfset local.newDate=local.startdate>		
+		<cfloop from="1" to="#local.DateDifference+1#" index="i">		
+			<cfif local.newDate GTE dateFormat(#session.todaydate#, "yyyy-mm-dd")>
+				<cfset arrayAppend(local.arrayOfDates, local.newDate)>
+			</cfif>	
+			<cfset local.newDate = dateAdd('d', 1, local.newDate)>			
+		</cfloop>		
+		<cfreturn local.arrayOfDates>
 	</cffunction>
 </cfcomponent>
 

@@ -9,18 +9,22 @@
     </cffunction>
     <cffunction name="onSessionStart" returnType="boolean" output="false">        
         <cfset session.username = "">
-        <cfset session.userrole = "">
+        <cfset session.userrole = "">   
+                 
         <cfreturn true>
     </cffunction>
     <cffunction name="onRequestStart" returnType="boolean" output="false">
+        
         <cfreturn true>
     </cffunction>
     <cffunction name="onRequest" returnType="boolean" output="true">
         <cfargument name="targetPage" type="string" required="true">
         <cfinclude template="#arguments.targetPage#">
+        
         <cfreturn true>
     </cffunction>
-    <cffunction name="onRequestEnd" returnType="void" output="false">        
+    <cffunction name="onRequestEnd" returnType="void" output="false">    
+        
     </cffunction>
     <cffunction name="onSessionEnd" returnType="void" output="false">       
     </cffunction>

@@ -7,7 +7,15 @@ function extractStringFromWDDX(wddxData) {
   }
 }
 function redirectToTicketBooking(){
-	window.location.href="bookTickets.cfm";
+  $.ajax({
+    type: "POST",
+    url: 'Components/loginaction.cfc?method=setDateSession',
+    cache: false,
+    success: function(data){      
+      window.location.href="bookTickets.cfm";      
+    }
+  });
+	
 }
 
 function loginwithgoogle(){  

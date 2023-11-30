@@ -343,4 +343,8 @@ ul .list {
 #preBtn:hover{
   color: #867e7e;
 }
+.libtn{
+  background-color: white;
+  border:0px;
+}
 

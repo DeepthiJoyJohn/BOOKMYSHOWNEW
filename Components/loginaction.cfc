@@ -41,6 +41,11 @@
         <cfreturn "1"> 
     </cffunction>
 
+	<cffunction name="setDateSession" access="remote" returntype="string"> 
+        <cfset session.todayDate = now()>   
+        <cfreturn "1"> 
+    </cffunction>
+
 	
 
 </cfcomponent>

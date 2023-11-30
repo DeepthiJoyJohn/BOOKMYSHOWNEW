@@ -8,72 +8,75 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />                      
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    </head>
-   <cfset session.todaydate=now()> 
+    </head>   
     <cfoutput>        
         <body>           
             <cfinclude template="outLook.cfm"> 
-            <cfinvoke component="BOOKMYSHOWNEW/Components/events" method="getEventsFromDb" returnvariable="resultEvents">
-                    <cfinvokeargument name="eventId" value="#session.eventid#">
-            </cfinvoke>
-            <section class="movie-details">
-                <div class="fix-height-div">
-                    <div class="top-section-container">
-                        <div class="movie-details-container"> 
-                            <div class="text-details">   
-                                <h1>
-                                    <div class="cinema-name-container">                    
-                                        <a href="toeventdetailspage" class="cinema-name-container">
-                                            #resultEvents.eventname#-#resultEvents.eventlanguage#								
-                                        </a>
-                                    </div> 
-                                </h1> 
-                            </div>
+            <cfif session.eventid NEQ "">
+                <cfinvoke component="BOOKMYSHOWNEW/Components/events" method="getEventsFromDb" returnvariable="resultEvents">
+                        <cfinvokeargument name="eventId" value="#session.eventid#">
+                </cfinvoke>
+                <section class="movie-details">
+                    <div class="fix-height-div">
+                        <div class="top-section-container">
+                            <div class="movie-details-container"> 
+                                <div class="text-details">   
+                                    <h1>
+                                        <div class="cinema-name-container">                    
+                                            <a href="toeventdetailspage" class="cinema-name-container">
+                                                #resultEvents.eventname#-#resultEvents.eventlanguage#								
+                                            </a>
+                                        </div> 
+                                    </h1> 
+                                </div>
+                            </div> 
                         </div> 
-                    </div> 
-                </div>               
-            </section>  
-            <form id="dateContainerForm" action="bookTickets.cfm" method="post"> 
-                <cfoutput>#session.todaydate#</cfoutput>                 
-                <cfif StructKeyExists(form,"preveBtnDate")>
-                    <cfif session.todaydate GT now()>
-                        <cfset session.todaydate = dateAdd('d', -1, session.todaydate)>	
-                    </cfif> 
-                <cfelseif  StructKeyExists(form,"nextBtnDate")>
-                    <cfif dateFormat(session.todaydate,"yyyy-mm-dd") LT dateFormat(resultEvents.enddate,"yyyy-mm-dd")>
-                        <cfset session.todaydate = dateAdd('d', 1, session.todaydate)>	
-                    </cfif>
-                </cfif> 
-
-                <cfinvoke component="BOOKMYSHOWNEW/Components/events" method="getDateRangeOfEvents" returnvariable="resultDateRange">
-                    <cfinvokeargument name="eventId" value="#session.eventid#">                
-                </cfinvoke>      
-                <div class="datecontainer">
-                    <ul class="date-list">
-                        <button type="Submit" name="preveBtnDate" id="preve_imageBtnDate" class="btnDateArrow">
-                            <i class="fa fa-angle-left fa-2xl" id="preBtn"></i>
-                        </button> 
-                        <cfloop from="1" to="#arrayLen(resultDateRange)#" index="i">
-                            <cfif dateFormat(resultDateRange[i],"yyyy-mm-dd") EQ dateFormat(now(),"yyyy-mm-dd")>
-                                <li class="date-item active">
-                                    <span class="day">#dateFormat(resultDateRange[i],"ddd")#</span>
-                                    <span class="date"> #dateFormat(resultDateRange[i],"dd")#</span>
-                                    <span class="month">#dateFormat(resultDateRange[i],"MMM")#</span>
-                                </li>
-                            <cfelse>
-                                <li class="date-item ">
-                                    <span class="day">#dateFormat(resultDateRange[i],"ddd")#</span>
-                                    <span class="date"> #dateFormat(resultDateRange[i],"dd")#</span>
-                                    <span class="month">#dateFormat(resultDateRange[i],"MMM")#</span>
-                                </li>
-                            </cfif>
-                        </cfloop>
-                        <button type="submit" name="nextBtnDate" id="next_imageBtnDate"  class="btnDateArrow">
-                            <i class="fa solid fa-angle-right fa-2xl" id="preBtn1"></i>
-                        </button>
-                    <ul>
-                </div>
-            </form>
+                    </div>               
+                </section>  
+                <form id="dateContainerForm" action="bookTickets.cfm" method="post">                
+                    <cfif  StructKeyExists(form,"preveBtnDate")> 
+                        <cfif session.todaydate GT now()>
+                            <cfset session.todaydate = dateAdd('d', -1, session.todaydate)>	
+                        </cfif> 
+                    <cfelseif  StructKeyExists(form,"nextBtnDate")>
+                        <cfif dateFormat(session.todaydate,"yyyy-mm-dd") LT dateFormat(resultEvents.enddate,"yyyy-mm-dd")>
+                            <cfset session.todaydate = dateAdd('d', 1, session.todaydate)>	
+                        </cfif>
+                    </cfif>  
+                    <cfinvoke component="BOOKMYSHOWNEW/Components/events" method="getDateRangeOfEvents" returnvariable="resultDateRange">
+                        <cfinvokeargument name="eventId" value="#session.eventid#">                
+                    </cfinvoke>      
+                    <div class="datecontainer">
+                        <ul class="date-list">
+                            <button type="Submit" name="preveBtnDate" id="preve_imageBtnDate" class="btnDateArrow">
+                                <i class="fa fa-angle-left fa-2xl" id="preBtn"></i>
+                            </button> 
+                            <cfloop from="1" to="#arrayLen(resultDateRange)#" index="i">
+                                <cfif dateFormat(resultDateRange[i],"yyyy-mm-dd") EQ dateFormat(now(),"yyyy-mm-dd")>
+                                    <button class="libtn" name="#resultDateRange[i]#" type="Submit">
+                                        <li class="date-item active">
+                                            <span class="day">#dateFormat(resultDateRange[i],"ddd")#</span>
+                                            <span class="date"> #dateFormat(resultDateRange[i],"dd")#</span>
+                                            <span class="month">#dateFormat(resultDateRange[i],"MMM")#</span>
+                                        </li>
+                                    </button>
+                                <cfelse>
+                                    <button class="libtn" name="#resultDateRange[i]#" type="Submit">
+                                        <li class="date-item ">
+                                            <span class="day">#dateFormat(resultDateRange[i],"ddd")#</span>
+                                            <span class="date"> #dateFormat(resultDateRange[i],"dd")#</span>
+                                            <span class="month">#dateFormat(resultDateRange[i],"MMM")#</span>
+                                        </li>
+                                    </button>
+                                </cfif>
+                            </cfloop>
+                            <button type="submit" name="nextBtnDate" id="next_imageBtnDate"  class="btnDateArrow">
+                                <i class="fa solid fa-angle-right fa-2xl" id="preBtn1"></i>
+                            </button>
+                        <ul>
+                    </div>                
+                </form>
+            </cfif>
             <div class="attributes-container">
                 <div class="offer-details-container legends-section">
                 </div>

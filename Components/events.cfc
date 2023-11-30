@@ -13,12 +13,11 @@
 		<cfreturn qGetEvents>
 	</cffunction>	
 	
-	<cffunction name="getDateRangeOfEvents" access="public" returntype="array">
-		<cfargument name="eventId">		
+	<cffunction name="getDateRangeOfEvents" access="public" returntype="array">			
 		<cfquery name="qDateRangeOfEvents" datasource="#application.datasoursename#">
 			SELECT DATEDIFF(enddate,startdate) AS DateDifference,startdate,enddate
 			FROM EVENT
-			WHERE eventid=<cfqueryparam value="#arguments.eventId#" cfsqltype="cf_sql_integer">
+			WHERE eventid=<cfqueryparam value="#session.eventid#" cfsqltype="cf_sql_integer">
 		</cfquery>
 		<cfset local.arrayOfDates = []>
 		<cfloop query="qDateRangeOfEvents">

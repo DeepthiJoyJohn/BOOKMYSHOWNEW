@@ -9,8 +9,9 @@
     </cffunction>
     <cffunction name="onSessionStart" returnType="boolean" output="false">        
         <cfset session.username = "">
-        <cfset session.userrole = "">   
-                 
+        <cfset session.userrole = "">
+        <cfset session.eventid = "">
+        <cfset session.todayDate = now()>
         <cfreturn true>
     </cffunction>
     <cffunction name="onRequestStart" returnType="boolean" output="false">
@@ -24,7 +25,7 @@
         <cfreturn true>
     </cffunction>
     <cffunction name="onRequestEnd" returnType="void" output="false">    
-        
+         
     </cffunction>
     <cffunction name="onSessionEnd" returnType="void" output="false">       
     </cffunction>

@@ -65,5 +65,6 @@
             <script src="js/scripts.js"></script>  
             <script src="js/loginaction.js"></script>         
         </body> 
+        <cfinclude template="footer.cfm"> 
     </cfoutput>
 </html>

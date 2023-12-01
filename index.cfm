@@ -24,8 +24,14 @@
                 <div class="imageSliderList">                    
                 </div>                
             </div>
+            <div class="sc-133848s-2 sc-291x3n-1 jZYART">
+                <h2 class="sc-7o7nez-0 sc-7o7nez-1 hpMgIh">
+                    Recommended Movies
+                </h2>
+            </div>
             <cfinvoke component="BOOKMYSHOWNEW/Components/events" method="getEventsFromDb" returnvariable="resultEvents">
                 <cfinvokeargument name="eventId" value="0">
+                <cfinvokeargument name="eventtypeid" value="1">
             </cfinvoke>
             <div class="bestofElectronic_Container">                
                 <div class="bestofElectronic_list">
@@ -43,10 +49,37 @@
                         </cfloop>                        
                     </div>
                 </div>
-            </div>   
+            </div> 
+            <div class="sc-133848s-2 sc-291x3n-1 jZYART">
+                <h2 class="sc-7o7nez-0 sc-7o7nez-1 hpMgIh">
+                    The Best Of Live Events
+                </h2>
+            </div>  
+            <cfinvoke component="BOOKMYSHOWNEW/Components/events" method="getEventsFromDb" returnvariable="resultEvents">
+                <cfinvokeargument name="eventId" value="0">
+                <cfinvokeargument name="eventtypeid" value="2">
+            </cfinvoke>
+            <div class="bestofElectronic_Container">                
+                <div class="bestofElectronic_list">
+                    <div class="bestofElectronic_product_item">
+                        <cfloop query="#resultEvents#">
+                            <div class="bestofElectronic_items" onclick="redirectToEventDetail(#resultEvents.eventid#)">
+                                <div class="bestofElectronic_image_Product">
+                                    <img src="#resultEvents.eventimg#"/>
+                                </div>
+                                <div class="bestofElectronicmoreOption">
+                                    <p class="bestofElectronicProduct_name">#resultEvents.eventname#</p>                                    
+                                    <p class="bestofElectronicProduct_brand">#resultEvents.eventtype#</p>
+                                </div>                        
+                            </div>	
+                        </cfloop>                        
+                    </div>
+                </div>
+            </div> 
         </cfoutput>         
         </main>
         <script src="js/javascript.js" type="module"></script>   
         <script src="js/scripts.js"></script> 
     </body> 
+    <cfinclude template="footer.cfm">  
 </html>

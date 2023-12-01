@@ -1,11 +1,13 @@
 <cfcomponent> 	
 	<cffunction name="getEventsFromDb" access="public" returntype="query">
 		<cfargument name="eventId">
+		<cfargument name="eventtypeid">
 		<cfquery name="qGetEvents" datasource="#application.datasoursename#">
 			SELECT event.*,EXTRACT(HOUR FROM eventtime) AS "Hours",EXTRACT(MINUTE FROM eventtime) AS "Minutes"
-			FROM event
+			FROM event 
+			WHERE eventtypeid=<cfqueryparam value="#arguments.eventtypeid#" cfsqltype="cf_sql_integer">
 			<cfif arguments.eventId NEQ 0>
-				WHERE eventid=<cfqueryparam value="#arguments.eventId#" cfsqltype="cf_sql_integer">
+				AND eventid=<cfqueryparam value="#arguments.eventId#" cfsqltype="cf_sql_integer">
 			<cfelse>
 				LIMIT 6	
 			</cfif>
@@ -33,6 +35,14 @@
 			<cfset local.newDate = dateAdd('d', 1, local.newDate)>			
 		</cfloop>		
 		<cfreturn local.arrayOfDates>
+	</cffunction>
+
+	<cffunction name="getEventTypes" access="public" returntype="query">
+		<cfquery name="qGetEventTypes" datasource="#application.datasoursename#">
+			SELECT *
+			FROM EVENTTYPE			
+		</cfquery>
+		<cfreturn qGetEventTypes> 		
 	</cffunction>
 </cfcomponent>
 

@@ -58,6 +58,7 @@
                                 <button class="btncontinue" id="btncontinueemail" onclick="loginaction(`email`)">Continue</button>
                             </div>
                         </div>
+                        
                     </cfoutput>
                 </form>
             </div>
@@ -100,5 +101,13 @@
             </div>   
     </cfif>
 </header> 
+<cfinvoke component="BOOKMYSHOWNEW/Components/events" method="getEventTypes" returnvariable="resultEventTypes"></cfinvoke>
+<cfoutput>
+    <div class="ehingX">
+        <cfloop query="resultEventTypes">
+            <a href="#resultEventTypes.eventlistingpage#" class="bwc__sc-1shzs91-0 bYfeWy">#resultEventTypes.eventtype#</a>    
+        </cfloop>
+    </div>
+</cfoutput>
      
     

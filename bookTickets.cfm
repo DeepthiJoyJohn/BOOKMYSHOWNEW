@@ -14,7 +14,8 @@
             <cfinclude template="outLook.cfm">             
             <cfif session.eventid NEQ "">
                 <cfinvoke component="BOOKMYSHOWNEW/Components/events" method="getEventsFromDb" returnvariable="resultEvents">
-                        <cfinvokeargument name="eventId" value="#session.eventid#">
+                    <cfinvokeargument name="eventId" value="#session.eventid#">
+                    <cfinvokeargument name="eventtypeid" value="1">
                 </cfinvoke>
                 <section class="movie-details">
                     <div class="fix-height-div">
@@ -45,41 +46,33 @@
                     </cfif>  
                     <cfinvoke component="BOOKMYSHOWNEW/Components/events" method="getDateRangeOfEvents" returnvariable="resultDateRange">
                         <cfinvokeargument name="eventId" value="#session.eventid#">                
-                    </cfinvoke> 
-                    <cfloop from="1" to="#arrayLen(resultDateRange)#" index="i">
-                        <cfif  StructKeyExists(form,"#resultDateRange[i]#")>
-                            <cfset session.todaydate = resultDateRange[i]>	
-                            <cfinvoke component="BOOKMYSHOWNEW/Components/events" method="getDateRangeOfEvents" returnvariable="resultDateRange1">
-                                <cfinvokeargument name="eventId" value="#session.eventid#">                
-                            </cfinvoke>
-                            <cfset resultDateRangenew=resultDateRange1>
-                        <cfelse>
-                            <cfset resultDateRangenew=resultDateRange>
-                        </cfif>
-                    </cfloop>     
+                    </cfinvoke>
                     <div class="datecontainer">
                         <ul class="date-list">
                             <button type="Submit" name="preveBtnDate" id="preve_imageBtnDate" class="btnDateArrow">
                                 <i class="fa fa-angle-left fa-2xl" id="preBtn"></i>
                             </button> 
-                            <cfloop from="1" to="#arrayLen(resultDateRangenew)#" index="i">                                                              
-                                <cfif dateFormat(resultDateRangenew[i],"yyyy-mm-dd") EQ dateFormat(now(),"yyyy-mm-dd")>
-                                    <button class="libtn" name="#resultDateRangenew[i]#" type="Submit">
+                            <cfloop from="1" to="#arrayLen(resultDateRange)#" index="i">   
+                                <cfif  StructKeyExists(form,"#resultDateRange[i]#")>
+                                    <cfset session.todaydate = resultDateRange[i]> 
+                                </cfif>                                                                                          
+                                <cfif dateFormat(resultDateRange[i],"yyyy-mm-dd") EQ dateFormat(now(),"yyyy-mm-dd")>
+                                    <button class="libtn" name="#resultDateRange[i]#" type="Submit" onclick="refreshpage()">
                                         <li class="date-item active">
-                                            <span class="day">#dateFormat(resultDateRangenew[i],"ddd")#</span>
-                                            <span class="date"> #dateFormat(resultDateRangenew[i],"dd")#</span>
-                                            <span class="month">#dateFormat(resultDateRangenew[i],"MMM")#</span>
+                                            <span class="day">#dateFormat(resultDateRange[i],"ddd")#</span>
+                                            <span class="date"> #dateFormat(resultDateRange[i],"dd")#</span>
+                                            <span class="month">#dateFormat(resultDateRange[i],"MMM")#</span>
                                         </li>
                                     </button>
                                 <cfelse>
-                                    <button class="libtn" name="#resultDateRangenew[i]#" type="Submit">
+                                    <button class="libtn" name="#resultDateRange[i]#" type="Submit" onclick="refreshpage()">
                                         <li class="date-item ">
-                                            <span class="day">#dateFormat(resultDateRangenew[i],"ddd")#</span>
-                                            <span class="date"> #dateFormat(resultDateRangenew[i],"dd")#</span>
-                                            <span class="month">#dateFormat(resultDateRangenew[i],"MMM")#</span>
+                                            <span class="day">#dateFormat(resultDateRange[i],"ddd")#</span>
+                                            <span class="date"> #dateFormat(resultDateRange[i],"dd")#</span>
+                                            <span class="month">#dateFormat(resultDateRange[i],"MMM")#</span>
                                         </li>
                                     </button>
-                                </cfif>
+                                </cfif>                                
                             </cfloop>
                             <button type="submit" name="nextBtnDate" id="next_imageBtnDate"  class="btnDateArrow">
                                 <i class="fa solid fa-angle-right fa-2xl" id="preBtn1"></i>

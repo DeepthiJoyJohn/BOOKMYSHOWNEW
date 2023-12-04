@@ -99,6 +99,9 @@ function redirectToEventDetail(eventid){
 function displayLogOutDiv(){
 	window.open("index.cfm");
 }
+function refreshpage(){
+  window.location.refresh();
+}
 
 
 

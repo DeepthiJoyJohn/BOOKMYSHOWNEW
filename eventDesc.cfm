@@ -13,6 +13,8 @@
             <cfif session.eventid>
                 <cfinvoke component="BOOKMYSHOWNEW/Components/events" method="getEventsFromDb" returnvariable="resultEvents">
                         <cfinvokeargument name="eventId" value="#session.eventid#">
+                        <cfinvokeargument name="eventtypeid" value="1">
+
                 </cfinvoke>
                 <main class="eventDescBody">                            
                     <div class="bestofElectronic_Container1">  

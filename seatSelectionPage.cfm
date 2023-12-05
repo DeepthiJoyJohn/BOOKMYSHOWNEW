@@ -63,8 +63,7 @@
                                     </tr>                                     
                                     <tr>
                                         <td></td>
-                                        <cfloop from="1" to="#resultSeatTypes.noofseats#" index="i">
-                                            
+                                        <cfloop from="1" to="#resultSeatTypes.noofseats#" index="i">                                            
                                             <td><button class="seatbtn">#i#</button></td>
                                             <cfif i%10 eq 0>
                                                 </tr>

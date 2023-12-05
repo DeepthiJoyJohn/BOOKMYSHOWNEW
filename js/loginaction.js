@@ -92,8 +92,7 @@ function redirectToEventDetail(eventid){
       }
       
     }
-  });
-  
+  });  
 }
 
 function displayLogOutDiv(){
@@ -101,6 +100,24 @@ function displayLogOutDiv(){
 }
 function refreshpage(){
   window.location.refresh();
+}
+
+function redirecttoseatpage(hallid,showId){
+  alert(hallid);
+  $.ajax({
+    type: "POST",
+    url: 'Components/loginaction.cfc?method=setTheartreSession',
+    cache: false,
+    data:{hallid:hallid,showId:showId},
+    success: function(response){             
+      var retval = $(response).find("string").text();      
+      if(retval==1){
+        window.location.href="seatSelectionPage.cfm"
+      }else{
+       
+      }      
+    }
+  });  
 }
 
 

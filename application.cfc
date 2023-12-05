@@ -12,6 +12,7 @@
         <cfset session.userrole = "">
         <cfset session.eventid = "">
         <cfset session.todayDate = now()>
+        <cfset session.showId="">
         <cfreturn true>
     </cffunction>
     <cffunction name="onRequestStart" returnType="boolean" output="false">

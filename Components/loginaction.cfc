@@ -46,7 +46,12 @@
         <cfreturn "1"> 
     </cffunction>
 
-	
-
+	<cffunction name="setTheartreSession" access="remote" returntype="string"> 
+		<cfargument name="hallid">
+		<cfargument name="showId">
+        <cfset session.Hallid = arguments.hallid>
+		<cfset session.showId = arguments.showId>   
+        <cfreturn "1"> 
+    </cffunction>
 </cfcomponent>
 

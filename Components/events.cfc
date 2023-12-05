@@ -44,5 +44,29 @@
 		</cfquery>
 		<cfreturn qGetEventTypes> 		
 	</cffunction>
+
+	<cffunction name="getEventHalls" access="public" returntype="query">
+		<cfquery name="qGetEventHalls" datasource="#application.datasoursename#">
+			SELECT DISTINCT(shows.eventHallId) AS eventHallId,eventHallName 
+			FROM shows 
+			INNER JOIN eventhall ON(shows.eventHallId=eventhall.eventHallId)
+			WHERE DATE(showDate)=CURDATE()	
+			<cfif session.showId NEQ "">
+				AND shows.showId=<cfqueryparam value="#session.showId#" cfsqltype="cf_sql_integer">
+			</cfif>		
+		</cfquery>
+		<cfreturn qGetEventHalls> 		
+	</cffunction>
+
+	<cffunction name="getShowTime" access="public" returntype="query">
+		<cfargument name="hallid">
+		<cfquery name="qGetShowTime" datasource="#application.datasoursename#">
+			SELECT TIME_FORMAT(starttime, '%h:%i %p') AS showtime,showId,DATE_FORMAT(showDate,"%D-%M-%Y") AS showdate
+			FROM SHOWS 
+			WHERE eventid=<cfqueryparam value="#session.eventid#" cfsqltype="cf_sql_integer">
+			AND eventHallId=<cfqueryparam value="#arguments.hallid#" cfsqltype="cf_sql_integer">			
+		</cfquery>
+		<cfreturn qGetShowTime> 		
+	</cffunction>
 </cfcomponent>
 

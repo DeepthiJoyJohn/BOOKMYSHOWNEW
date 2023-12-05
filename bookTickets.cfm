@@ -11,7 +11,8 @@
     </head>   
     <cfoutput>        
         <body>           
-            <cfinclude template="outLook.cfm">             
+            <cfinclude template="outLook.cfm">    
+            <cfset session.showId="">           
             <cfif session.eventid NEQ "">
                 <cfinvoke component="BOOKMYSHOWNEW/Components/events" method="getEventsFromDb" returnvariable="resultEvents">
                     <cfinvokeargument name="eventId" value="#session.eventid#">
@@ -99,44 +100,55 @@
                     </div>
                 </div>
             </div> 
-            <ul class="venuelist">                    
-                <li class="list">
-                    <i class="fa fa-heart-o red"></i>fdhfdh
-                    <div class="info-section">
-                        <img src="https://in.bmscdn.com/moviemode/cinemaphotoshowcase/info.png" class="venue-info-icon lazy">
-                        <div class="venue-info-text">INFO</div>
-                    </div>
-                    <div class="unpaid-mticket-wrapper">	
-                        <div class="__mticket-info">
-                            <span class="icon">
-                                <i class="fa fa-mobile" aria-hidden="true"></i>
-                            </span>
-                            <label>M-Ticket</label>                                
+            <cfinvoke component="BOOKMYSHOWNEW/Components/events" method="getEventHalls" returnvariable="resultEventHalls">                                    
+            </cfinvoke>                      
+            <ul class="venuelist">   
+                <cfloop query="resultEventHalls">                   
+                    <li class="list">
+                        <div class="flex">
+                            <div class="flex">
+                                <i class="fa fa-heart-o red"></i>
+                                #resultEventHalls.eventHallName#
+                            </div>
+                            <div class="info-section">
+                                <img src="https://in.bmscdn.com/moviemode/cinemaphotoshowcase/info.png" class="venue-info-icon lazy">
+                                <div class="venue-info-text">INFO</div>
+                            </div>
+                        </div>
+                        <div class="unpaid-mticket-wrapper">	
+                            <div class="__mticket-info">
+                                <span class="icon">
+                                    <i class="fa fa-mobile" aria-hidden="true"></i>
+                                </span>
+                                <label>M-Ticket</label>                                
+                            </div>	
+                            <div class="__fnb-info ">
+                                <span class="icon">   
+                                    <i class='fa-solid fa-burger'></i>                                 
+                                </span>
+                                <label>Food &amp; Beverage</label>
+                            </div>
+                        </div>
+                        <cfinvoke component="BOOKMYSHOWNEW/Components/events" method="getShowTime" returnvariable="resultShowTime">  
+                            <cfinvokeargument  name="hallid" value="#resultEventHalls.eventHallId#">                 
+                        </cfinvoke>
+                        <cfloop query="resultShowTime">
+                            <div class="showtime-pill-container" onclick="redirecttoseatpage(#resultEventHalls.eventHallId#,#resultShowTime.showId#)">
+                                <a class="showtime-pill">
+                                    <div class="__details">
+                                        <div class="__text">
+                                            #resultShowTime.showtime#    
+                                        </div>
+                                    </div>	
+                                </a>	
+                            </div>	
+                        </cfloop>                        
+                        <div class="venue-flags">
+                            <span class="gold-icon"></span>
+                            <span class="venue-flags-details">Non-cancellable</span>
                         </div>	
-                        <div class="__fnb-info ">
-                            <span class="icon">   
-                                <i class='fa-solid fa-burger'></i>                                 
-                            </span>
-                            <label>Food &amp; Beverage</label>
-                        </div>
-                    </div>	
-                    <!---<div class="showtime-pill-wrapper">--->
-                        <div class="showtime-pill-container">
-                            <a class="showtime-pill">
-                                <div class="__details">
-                                    <div class="__text">
-                                        11:10 AM
-                                    </div>
-                                </div>	
-                            </a>	
-                        </div>
-                    <!---</div>	--->
-                    <div class="venue-flags">
-                        <span class="gold-icon"></span>
-                        <span class="venue-flags-details">Non-cancellable</span>
-                    </div>	
-                </li>                    
-                <li class="list"><i class="fa fa-heart-o red"></i>cndcn</li>
+                    </li>
+                </cfloop>  
             </ul> 
             <script src="js/javascript.js" type="module"></script>   
             <script src="js/scripts.js"></script>  

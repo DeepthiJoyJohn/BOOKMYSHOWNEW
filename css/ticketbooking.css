@@ -87,6 +87,16 @@ body {
   color: #999;
   z-index: 3;
 }
+.movie-details-seatbooking {
+  position: relative;
+  text-align: left;
+  display: inline-block;
+  width: 100%;
+  box-sizing: border-box;
+  background: #1f2533;
+  color: #999;
+  z-index: 3;
+}
 .movie-details .fix-height-div {
   position: relative;
   width: 100%;
@@ -113,6 +123,13 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: lighter;
 }
+.cinema-name-container1{
+  color: #fff;
+  font-size: 25px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: lighter;
+}
+
 button, input[type=button] {
   width: auto;
   overflow: visible;
@@ -200,11 +217,14 @@ ul .list {
   display: flex;
   flex-direction: row;
   background-color: #fff;
+  cursor: pointer;
 }
 .unpaid-mticket-wrapper {
   margin-top: 10px;
   float: left;
   width: 100%;
+  margin-left:-270px;
+  margin-top:30px;
 }
 
 .__mticket-info {
@@ -258,6 +278,7 @@ ul .list {
   margin: 8px;
   width: calc(100% / 3 - 16px);
   max-width: 110px;
+  cursor: pointer;
 }
 .showtime-pill {
   border: 1px solid #999;
@@ -292,9 +313,9 @@ ul .list {
 .venue-flags {
   margin-bottom: 0;
   padding: 8px 0 0;
-  margin-left: 118px;
+  margin-left: 250px;
   position: absolute;
-  margin-top:30px;
+  margin-top:40px;
 }
 
 .venue-flags .gold-icon {
@@ -347,6 +368,96 @@ ul .list {
   background-color: white;
   border:0px;
 }
+.__event-name {
+  max-width: 500px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  
+}
+.sa{
+  font-size: 12px;
+  padding:10px;
+  margin-bottom: 15px;
+}
+.sa1{
+  font-size: 10px;
+  padding:10px;
+  color: #c5bebe;
+  font-weight: bolder;
+  
+}
 
-
-
+.header-container {
+  position: relative;
+  zoom: 1;
+  min-width: 320px;
+  padding: 9px 0 9px 30px;
+  background: #1f2533;
+}
+.bkf-container _seat {
+  width: 100%;
+  zoom: 1;
+  display: none;
+  position: relative;
+  height: 100%;
+}
+.seats {
+  width: 60%;
+  position: relative;
+  z-index: 1;
+  zoom: 1;
+  padding: 50px 30px;
+  background: #fafafa;
+  margin-left:250px;
+  margin-right:50px;
+}
+table {
+  font-size: inherit;
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
+.PriceB1 {
+  position: relative;
+  z-index: 1;
+}
+.seatP {
+  width: 100%;
+  color: #999;
+  font-size: 12px;
+  margin-bottom: 5px;
+  text-align: left;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ececec;
+}
+tbody, td, tfoot, th, thead, time, tr, ul, var, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font-weight: 400;
+  vertical-align: baseline;
+  background: 0 0;
+}
+.bkf-layout .bkf-container .seat-container .seats .__block>div table .seatR {
+  margin-right: 6px;
+  margin-top: 9px;
+  font-size: 14px;
+  color: #b3b3b3;
+}
+.seatI {
+  margin: 4px;
+  float: left;
+  width: 25px;
+  height: 25px;
+}
+.seatbtn {
+  border: 1px solid #1ea83c;
+  padding:5px;
+  margin: 4px;
+  float: left;
+  width: 25px;
+  height: 25px;
+  border-radius: 2px;
+}

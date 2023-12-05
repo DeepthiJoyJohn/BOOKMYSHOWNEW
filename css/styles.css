@@ -237,4 +237,8 @@
   font-weight: 700;
   line-height: 1.17;
 }
+.flex{
+  display: flex;
+  width:300px;
+}
 

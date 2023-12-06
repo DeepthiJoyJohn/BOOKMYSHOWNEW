@@ -50,11 +50,11 @@
 			SELECT DISTINCT(shows.eventHallId) AS eventHallId,eventHallName 
 			FROM shows 
 			INNER JOIN eventhall ON(shows.eventHallId=eventhall.eventHallId)
-			WHERE DATE(showDate)=CURDATE()	
+			WHERE DATE(showDate)="#dateFormat(session.selectedDate,"yyyy-mm-dd")#"	
 			<cfif session.showId NEQ "">
 				AND shows.showId=<cfqueryparam value="#session.showId#" cfsqltype="cf_sql_integer">
 			</cfif>		
-		</cfquery>
+		</cfquery>		
 		<cfreturn qGetEventHalls> 		
 	</cffunction>
 

@@ -10,7 +10,7 @@
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     </head>   
     <cfoutput>        
-        <body>           
+        <body>     
             <cfinclude template="outLook.cfm">    
             <cfset session.showId="">           
             <cfif session.eventid NEQ "">
@@ -34,14 +34,14 @@
                             </div> 
                         </div> 
                     </div>               
-                </section>  
+                </section>                
                 <form id="dateContainerForm" action="bookTickets.cfm" method="post">                
                     <cfif  StructKeyExists(form,"preveBtnDate")> 
-                        <cfif session.todaydate GT now()>
+                        <cfif session.todaydate GT now()>                            
                             <cfset session.todaydate = dateAdd('d', -1, session.todaydate)>	
                         </cfif> 
                     <cfelseif  StructKeyExists(form,"nextBtnDate")>
-                        <cfif dateFormat(session.todaydate,"yyyy-mm-dd") LT dateFormat(resultEvents.enddate,"yyyy-mm-dd")>
+                        <cfif dateFormat(session.todaydate,"yyyy-mm-dd") LT dateFormat(resultEvents.enddate,"yyyy-mm-dd")>                            
                             <cfset session.todaydate = dateAdd('d', 1, session.todaydate)>	
                         </cfif>
                     </cfif>  
@@ -56,9 +56,11 @@
                             <cfloop from="1" to="#arrayLen(resultDateRange)#" index="i">   
                                 <cfif  StructKeyExists(form,"#resultDateRange[i]#")>
                                     <cfset session.todaydate = resultDateRange[i]> 
-                                </cfif>                                                                                          
-                                <cfif dateFormat(resultDateRange[i],"yyyy-mm-dd") EQ dateFormat(now(),"yyyy-mm-dd")>
-                                    <button class="libtn" name="#resultDateRange[i]#" type="Submit" onclick="refreshpage()">
+                                    <cfset session.selectedDate = resultDateRange[i]>                                   
+                                    <cflocation url="bookTickets.cfm">                                 
+                                </cfif>                                                                       
+                                <cfif dateFormat(resultDateRange[i],"yyyy-mm-dd") EQ dateFormat(session.selectedDate,"yyyy-mm-dd")>
+                                    <button class="libtn" name="#resultDateRange[i]#" type="Submit">
                                         <li class="date-item active">
                                             <span class="day">#dateFormat(resultDateRange[i],"ddd")#</span>
                                             <span class="date"> #dateFormat(resultDateRange[i],"dd")#</span>
@@ -66,7 +68,7 @@
                                         </li>
                                     </button>
                                 <cfelse>
-                                    <button class="libtn" name="#resultDateRange[i]#" type="Submit" onclick="refreshpage()">
+                                    <button class="libtn" name="#resultDateRange[i]#" type="Submit">
                                         <li class="date-item ">
                                             <span class="day">#dateFormat(resultDateRange[i],"ddd")#</span>
                                             <span class="date"> #dateFormat(resultDateRange[i],"dd")#</span>

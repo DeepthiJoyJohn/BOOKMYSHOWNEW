@@ -416,7 +416,8 @@ table {
   font-size: inherit;
   border-collapse: collapse;
   border-spacing: 0;
-  width: 100%;
+  width: 70%;
+  margin:auto;
 }
 .PriceB1 {
   position: relative;
@@ -425,7 +426,7 @@ table {
 .seatP {
   width: 100%;
   color: #999;
-  font-size: 12px;
+  font-size: 10px;
   margin-bottom: 5px;
   text-align: left;
   padding-bottom: 10px;
@@ -433,7 +434,7 @@ table {
 }
 tbody, td, tfoot, th, thead, time, tr, ul, var, video {
   margin: 0;
-  padding: 0;
+
   border: 0;
   font-size: 100%;
   font-weight: 400;
@@ -462,3 +463,48 @@ tbody, td, tfoot, th, thead, time, tr, ul, var, video {
   border-radius: 2px;
   
 }
+.soldbtn {  
+    border: 1px solid #3636361f;
+    padding:5px;
+    margin: 4px;
+    float: left;
+    width: 25px;
+    height: 25px;
+    border-radius: 2px;
+    background-color: #a3a1a1;
+}
+.selectedbtn {  
+  border: 1px solid #1ea83c;
+  background-color: #1ea83c;
+  padding:5px;
+  margin: 4px;
+  float: left;
+  width: 25px;
+  height: 25px;
+  border-radius: 2px;
+}
+.btntable{
+  margin-left: 25%;
+  padding: 1px;
+}
+.btntable td{
+  width:1%;
+  text-align: left;
+}
+
+.spanbtn{ 
+  font-weight: bolder;  
+  text-align: left;
+}
+.paybtn{
+  
+  background-color:#f84464;
+  color: #fff;
+  border-radius: 10px;
+  width:250px;
+  height:40px;
+  border-color: white;
+  margin-left: 20%;
+}
+
+

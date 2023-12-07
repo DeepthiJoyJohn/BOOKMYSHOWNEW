@@ -9,7 +9,7 @@
 			username=<cfqueryparam value="#arguments.mobileNo#" cfsqltype="cf_sql_varchar">
 			AND pwd=<cfqueryparam value="#arguments.password#" cfsqltype="cf_sql_varchar">
 		</cfquery>
-		<cfif qcheckuser.recordCount GT 0>
+		<cfif qcheckuser.recordCount>
 			<cfloop query="qcheckuser">
 				<cfset session.username = "#qcheckuser.username#">
 				<cfset session.userid = "#qcheckuser.userid#">

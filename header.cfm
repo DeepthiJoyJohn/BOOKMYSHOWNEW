@@ -1,7 +1,9 @@
-<div id="loginPopup" class="popup">
-    <div class="popup-content">                
+<cfset local.movieTypeObject=createObject("component", "Components.events")> 
+<cfset local.eventTypes=local.movieTypeObject.getEventTypes()>
+<div id="loginPopup" class="popUp">
+    <div class="popUpContent">                
         <div class="right">
-            <div class="input-group">
+            <div class="inputGroup">
                 <form id="loginform">
                     <cfoutput>
                         <div id="mainpopupdiv">
@@ -27,7 +29,7 @@
                             <div>
                                 <button class="btncontinue" id="btncontinue" onclick="hide()">Continue</button>
                             </div>                            
-                            <div class="newsignup" id="newsignup">
+                            <div class="newSignup" id="newsignup">
                                 <a href="https://in.bookmyshow.com/terms-and-conditions">
                                     I agree to the Terms & Conditions & Privacy Policy
                                 </a>
@@ -68,7 +70,7 @@
 <header class="headerclass">
     <div class="logoContainer">
         <div class="logo">
-            <img src="Images/bookmyshow1.png"/>                    
+            <a href="index.cfm"><img src="Images/bookmyshow1.png"/></a>                    
         </div>
     </div>
     <div class="search_container">
@@ -85,7 +87,7 @@
         <div class="loginBtn_container">
             <a href="javascript:showLoginPopup()" class="loginBtn" id="loginBtn">Sign in</a>             
         </div>
-    <cfelse>
+    <cfelse>        
         <div class="more_link">   
                 <span class="imgGuestDiv">             
                     <img src="//in.bmscdn.com/m6/images/my-profile/bms-user.png" alt="Profile" class="imgGuest"><span class="imgGuestSpan">Hi,Guest</span> 
@@ -101,11 +103,10 @@
             </div>   
     </cfif>
 </header> 
-<cfinvoke component="BOOKMYSHOWNEW/Components/events" method="getEventTypes" returnvariable="resultEventTypes"></cfinvoke>
 <cfoutput>
-    <div class="ehingX">
-        <cfloop query="resultEventTypes">
-            <a href="#resultEventTypes.eventlistingpage#" class="bwc__sc-1shzs91-0 bYfeWy">#resultEventTypes.eventtype#</a>    
+    <div class="eventTypesDiv">
+        <cfloop query="local.eventTypes">
+            <a href="#local.eventTypes.eventlistingpage#">#local.eventTypes.eventtype#</a>    
         </cfloop>
     </div>
 </cfoutput>

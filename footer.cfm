@@ -1,4 +1,7 @@
+
 <div class="footer-container">
+    <div class="igiRIk"></div>    
+    <img  src="Images/logo.svg">    
     <p>
         Copyright 2023 © Bigtree Entertainment Pvt. Ltd. All Rights Reserved.<br>
         The content and images used on this site are copyright protected and 

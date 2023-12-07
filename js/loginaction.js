@@ -76,19 +76,19 @@ function loginaction(thisa){
   });
 }
 
-function redirectToEventDetail(eventid){
+function redirectToEventDetail(eventid,eventtypeid){
+  
   $.ajax({
     type: "POST",
     url: 'Components/loginaction.cfc?method=setEventSession',
     cache: false,
     data:{eventId:eventid},
     success: function(response){   
-          
       var retval = $(response).find("string").text();      
-      if(retval==1){
-        window.location.href="eventDesc.cfm"
+      if(retval==1 && eventtypeid==1){
+        window.location.href="eventDesc.cfm";
       }else{
-       
+        window.location.href="eventBooking.cfm";
       }
       
     }

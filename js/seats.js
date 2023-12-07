@@ -47,8 +47,9 @@ function bookSeats(){
     url: 'Components/seats.cfc?method=booking',
     cache: false,
     data:{noOfSeats:noofseats,amt:amt},
-    success: function(resonse){          
-      window.location.reload();
+    success: function(response){   
+      alert("Booking Successfull");          
+      window.location.href = 'seatSelectionPage.cfm';
     }
   });
 }

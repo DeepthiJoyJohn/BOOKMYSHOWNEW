@@ -9,7 +9,7 @@
     </head>
     <cfoutput>        
         <body>  
-            <cfinclude template="outLook.cfm"> 
+            <cfinclude template="header.cfm"> 
             <cfif session.eventid>
                 <cfinvoke component="BOOKMYSHOWNEW/Components/events" method="getEventsFromDb" returnvariable="resultEvents">
                         <cfinvokeargument name="eventId" value="#session.eventid#">

@@ -3,63 +3,50 @@
         <title> Movie Tickets, Plays, Sports, Events &amp; Cinemas near Delhi-NCR - BookMyShow Delhi-NCR.</title>
         <link rel="shortcut icon" href="Images/Icon/icon1.png">
         <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" href="css/styles.css">       
+        <link rel="stylesheet" href="css/styles.css">
+        <link rel="stylesheet" href="css/eventbooking.css">              
         <link rel="stylesheet" href="css/font-awesome.min.css">                      
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="js/jquery-3.6.0.min.js"></script>  
     </head>
     <cfoutput>        
         <body>  
-            <cfinclude template="outLook.cfm"> 
+            <cfinclude template="header.cfm"> 
             <cfif session.eventid>
                 <cfinvoke component="BOOKMYSHOWNEW/Components/events" method="getEventsFromDb" returnvariable="resultEvents">
                         <cfinvokeargument name="eventId" value="#session.eventid#">
                         <cfinvokeargument name="eventtypeid" value="2">
                 </cfinvoke>
-                <main class="eventDescBody">                            
-                    <div class="bestofElectronic_Container1">  
-                        <div class="bestofElectronic_list">
-                            <div class="bestofElectronic_product_item">
+                <main class="eventBookingBody">                            
+                    <div class="eventContainer1">  
+                        <div class="eventContainer2">
+                            <div class="eventContainer3">
                                 <cfloop query="#resultEvents#">
-                                    <div class="details">
-                                        <div class="image_Event_div" onclick="redirectToEventDetail(#resultEvents.eventid#)">
-                                            <div class="image_Event">
+                                    <div class="details1">
+                                        <cfset local.eventName=#resultEvents.eventname#>
+                                        <cfset local.eventStartTime=#resultEvents.eventstarttime#>
+                                        <cfset local.eventStartDate=#resultEvents.eventstartdatedisplay#>
+                                        <cfset local.eventId=#resultEvents.eventid#>
+                                        <div class="imageDiv1" onclick="redirectToEventDetail(#resultEvents.eventid#)">
+                                            <div class="imageDiv2">
                                                 <img src="#resultEvents.eventimg#"/>
-                                            </div>
-                                            <div class="bestofElectronicmoreOption">
-                                                <p class="bestofElectronicProduct_name1">In Cinemas</p>
-                                            </div>                                                               
-                                        </div>	
-                                        <div class="detailssub">
-                                            #resultEvents.eventname#
-                                            <div class="detailssubratings">                                            
-                                                <i class="fa fa-star red" aria-hidden="true"></i>#resultEvents.eventratings#/10
-                                            </div>
-                                            <div class="FLEX">
-                                                <div class="diGRHt">
-                                                    #resultEvents.eventdimension#
-                                                </div>
-                                                <div class="diGRHt">
-                                                    #resultEvents.eventlanguage#
-                                                </div>    
-                                            </div>
-                                            <div class="FLEX">
-                                                <div class="detailssubratings1">
-                                                #resultEvents.Hours#h #resultEvents.Minutes#m . #resultEvents.eventtype# .#resultEvents.releasedate#
-                                                </div>                                        
-                                            </div>  
-                                            <button data-phase="postRelease" class="bGKFux" onclick="redirectToTicketBooking(#resultEvents.eventid#)">
-                                                <div>
-                                                    <span>
-                                                        Book tickets
-                                                    </span>
-                                                </div>
-                                            </button>
-                                        </div>                                     
+                                            </div>                                                                                                           
+                                        </div>
                                     </div>
-                                </cfloop>                        
-                            </div>
-                        </div>
-                    </div> 
+                                </cfloop>
+                            </div>                            
+                        </div>    
+                        <div class="eventBookBtnDiv">
+                            <h3 class="eventName">#local.eventName# </h3>
+                            <h3 class="eventTIme">#local.eventStartDate# at #local.eventStartTime#</h3>
+                            <button data-phase="postRelease" class="bookEventBtn" onclick="redirectToTicketBooking(#local.eventId#)">
+                                <div>
+                                    <span>
+                                        Book 
+                                    </span>
+                                </div>
+                            </button> 
+                        </div>                    
+                    </div>
                 </main>
             </cfif>
             <script src="js/javascript.js" type="module"></script>   

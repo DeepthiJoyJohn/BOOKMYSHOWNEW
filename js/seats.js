@@ -53,3 +53,11 @@ function bookSeats(){
     }
   });
 }
+
+const spanEvent = document.querySelectorAll('.addMinusBtn');
+spanEvent.forEach(container => {
+  const quantityInput = container.querySelector('.quantity-input');
+  const plusButton = container.querySelector('.plus-button');
+  const minusButton = container.querySelector('.minus-button');
+  alert("d");
+})

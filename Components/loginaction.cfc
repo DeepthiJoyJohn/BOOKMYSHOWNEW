@@ -37,8 +37,10 @@
     </cffunction>
 
 	<cffunction name="setEventSession" access="remote" returntype="string">  
-		<cfargument name="eventId">     
-        <cfset session.eventid="#arguments.eventId#">        
+		<cfargument name="eventId">  
+		<cfargument name="eventTypeId">   
+        <cfset session.eventid="#arguments.eventId#">
+		<cfset session.eventTypeId="#arguments.eventTypeId#">        
         <cfreturn "1"> 
     </cffunction>
 

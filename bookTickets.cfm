@@ -6,17 +6,17 @@
         <link rel="stylesheet" href="css/styles.css">       
         <link rel="stylesheet" href="css/ticketbooking.css">       
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />                      
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>                      
+        <script src="js/jquery-3.6.0.min.js"></script> 
     </head>   
     <cfoutput>        
         <body>     
-            <cfinclude template="outLook.cfm">    
+            <cfinclude template="header.cfm">    
             <cfset session.showId="">           
             <cfif session.eventid NEQ "">
                 <cfinvoke component="BOOKMYSHOWNEW/Components/events" method="getEventsFromDb" returnvariable="resultEvents">
                     <cfinvokeargument name="eventId" value="#session.eventid#">
-                    <cfinvokeargument name="eventtypeid" value="1">
+                    <cfinvokeargument name="eventtypeid" value="#session.eventTypeId#">
                 </cfinvoke>
                 <section class="movie-details">
                     <div class="fix-height-div">
@@ -135,7 +135,7 @@
                             <cfinvokeargument  name="hallid" value="#resultEventHalls.eventHallId#">                 
                         </cfinvoke>
                         <cfloop query="resultShowTime">
-                            <div class="showtime-pill-container" onclick="redirecttoseatpage(#resultEventHalls.eventHallId#,#resultShowTime.showId#)">
+                            <div class="showtime-pill-container" onclick="redirecttoseatpage(#resultEventHalls.eventHallId#,#resultShowTime.showId#,#session.eventTypeId#)">
                                 <a class="showtime-pill">
                                     <div class="__details">
                                         <div class="__text">

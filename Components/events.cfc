@@ -3,7 +3,8 @@
 		<cfargument name="eventId">
 		<cfargument name="eventtypeid">
 		<cfquery name="qGetEvents" datasource="#application.datasoursename#">
-			SELECT event.*,EXTRACT(HOUR FROM eventtime) AS "Hours",EXTRACT(MINUTE FROM eventtime) AS "Minutes"
+			SELECT event.*,EXTRACT(HOUR FROM eventtime) AS "Hours",EXTRACT(MINUTE FROM eventtime) AS "Minutes",TIME_FORMAT(startdate, '%h:%i %p') AS eventstarttime,
+			DATE_FORMAT(startdate, '%dth %b %Y') AS eventstartdatedisplay
 			FROM event 
 			WHERE eventtypeid=<cfqueryparam value="#arguments.eventtypeid#" cfsqltype="cf_sql_integer">
 			<cfif arguments.eventId NEQ 0>
@@ -17,7 +18,7 @@
 	
 	<cffunction name="getDateRangeOfEvents" access="public" returntype="array">			
 		<cfquery name="qDateRangeOfEvents" datasource="#application.datasoursename#">
-			SELECT DATEDIFF(enddate,startdate) AS DateDifference,startdate,enddate
+			SELECT DATEDIFF(enddate,startdate) AS DateDifference,date(startdate) as startdate,date(enddate) as enddate
 			FROM EVENT
 			WHERE eventid=<cfqueryparam value="#session.eventid#" cfsqltype="cf_sql_integer">
 		</cfquery>
@@ -50,7 +51,8 @@
 			SELECT DISTINCT(shows.eventHallId) AS eventHallId,eventHallName 
 			FROM shows 
 			INNER JOIN eventhall ON(shows.eventHallId=eventhall.eventHallId)
-			WHERE DATE(showDate)="#dateFormat(session.selectedDate,"yyyy-mm-dd")#"	
+			WHERE DATE(showDate)="#dateFormat(session.selectedDate,"yyyy-mm-dd")#"
+			AND shows.eventid=<cfqueryparam value="#session.eventid#" cfsqltype="cf_sql_integer">	
 			<cfif session.showId NEQ "">
 				AND shows.showId=<cfqueryparam value="#session.showId#" cfsqltype="cf_sql_integer">
 			</cfif>		

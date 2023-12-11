@@ -81,26 +81,15 @@
         <div class="recent_search">
             
         </div>
-    </div>
-    
+    </div>    
     <cfif session.username EQ "">
         <div class="loginBtn_container">
             <a href="javascript:showLoginPopup()" class="loginBtn" id="loginBtn">Sign in</a>             
         </div>
-    <cfelse>        
-        <div class="more_link">   
-                <span class="imgGuestDiv">             
-                    <img src="//in.bmscdn.com/m6/images/my-profile/bms-user.png" alt="Profile" class="imgGuest"><span class="imgGuestSpan">Hi,Guest</span> 
-                    <i class="fa solid fa-angle-down icon_more" aria-hidden="true"></i>
-                </span>
-                <div class="more_menu">
-                    <div class="more_menu_list">
-                        <div class="menu_nav_link">
-                            <button class="jwbLgg" onclick="logout()">Sign Out</button>                                               
-                        </div>
-                    </div>
-                </div>
-            </div>   
+    <cfelse>   
+        <div class="loginBtn_container">
+            <a href="javascript:logout()" class="loginBtn" id="loginBtn">Log Out</a>             
+        </div> 
     </cfif>
 </header> 
 <cfoutput>

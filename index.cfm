@@ -33,7 +33,6 @@
                     Recommended Movies
                 </h2>
             </div>
-           
             <div class="eventContainer">                
                 <div class="eventContainerList">
                     <div class="eventContainerListItem">
@@ -60,7 +59,7 @@
                 <div class="eventContainerList">
                     <div class="eventContainerListItem">
                         <cfloop query="#local.resultEvents#">
-                            <div class="eventContainerListItemSub" onclick="redirectToEventDetail(#local.resultEvents.eventid#)">
+                            <div class="eventContainerListItemSub" onclick="redirectToEventDetail(#local.resultEvents.eventid#,2)">
                                 <div class="eventContainerListItemSub_ImageDiv">
                                     <img src="#local.resultEvents.eventimg#"/>
                                 </div>

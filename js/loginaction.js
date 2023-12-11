@@ -82,7 +82,7 @@ function redirectToEventDetail(eventid,eventtypeid){
     type: "POST",
     url: 'Components/loginaction.cfc?method=setEventSession',
     cache: false,
-    data:{eventId:eventid},
+    data:{eventId:eventid,eventTypeId:eventtypeid},
     success: function(response){   
       var retval = $(response).find("string").text();      
       if(retval==1 && eventtypeid==1){
@@ -102,7 +102,7 @@ function refreshpage(){
   window.location.refresh();
 }
 
-function redirecttoseatpage(hallid,showId){
+function redirecttoseatpage(hallid,showId,eventTypeId){
   alert(hallid);
   $.ajax({
     type: "POST",
@@ -111,10 +111,10 @@ function redirecttoseatpage(hallid,showId){
     data:{hallid:hallid,showId:showId},
     success: function(response){             
       var retval = $(response).find("string").text();      
-      if(retval==1){
+      if(eventTypeId==1){
         window.location.href="seatSelectionPage.cfm"
       }else{
-       
+        window.location.href="eventSeats.cfm"
       }      
     }
   });  

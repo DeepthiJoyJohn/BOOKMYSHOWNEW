@@ -1,7 +1,8 @@
 $(document).ready(function () {
   document.getElementById("btncontinue").style.display="none";  
   document.getElementById("phonepopupdiv").style.display="none";  
-  document.getElementById("emailpopupdiv").style.display="none";  
+  document.getElementById("emailpopupdiv").style.display="none"; 
+  document.getElementById("signUpDiv").style.display="none";   
   document.getElementById("btncontinue").setAttribute("disabled", "disabled");
 
 });
@@ -38,10 +39,8 @@ function showLoginPopup() {
   document.getElementById("login_btn").style.display = "block"; 
 }
 function showSignupPopup() {
-  var errorText = document.getElementById("errorText");
-  
-  errorText.textContent="";
- 
+  var errorText = document.getElementById("errorText");  
+  errorText.textContent=""; 
   document.getElementById("loginPopup").style.display = "block";
   document.getElementById("newsignup").style.display = "none"; 
   document.getElementById("signupview").style.display = "block";
@@ -49,7 +48,15 @@ function showSignupPopup() {
   document.getElementById("leftlogin").style.display = "none"; 
   document.getElementById("login_btn").style.display = "none"; 
   document.getElementById("signupbtn").style.display = "block"; 
+  document.getElementById("signUpDiv").style.display = "none"; 
   
+}
+function showSignUpDiv(){
+  document.getElementById("loginPopup").style.display = "block";
+  document.getElementById("mainpopupdiv").style.display = "none"; 
+   
+  document.getElementById("signUpDiv").style.display = "block";
+
 }
 function hideSignupPopup(){
   document.getElementById("signupview").style.display = "none";

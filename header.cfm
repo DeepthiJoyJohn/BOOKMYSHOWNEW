@@ -32,8 +32,14 @@
                             <div class="newSignup" id="newsignup">
                                 <a href="https://in.bookmyshow.com/terms-and-conditions">
                                     I agree to the Terms & Conditions & Privacy Policy
-                                </a>
+                                </a>                                 
                             </div> 
+                            <div class="newSignup" id="newsignup">
+                                <a href="javascript:showSignUpDiv()">
+                                    New to BookMyShow?Create an account
+                                </a>                                 
+                            </div> 
+                            
                         </div>
                         <div id="phonepopupdiv">
                             <div class="arrowleft" onclick="redirecttopopup()"><i class="fa fa-arrow-left" aria-hidden="true"></i></div>
@@ -60,7 +66,20 @@
                                 <button class="btncontinue" id="btncontinueemail" onclick="loginaction(`email`)">Continue</button>
                             </div>
                         </div>
-                        
+                        <div id="signUpDiv">
+                            <div class="arrowleft" onclick="redirecttopopup()"><i class="fa fa-arrow-left" aria-hidden="true"></i></div>
+                            <div class="ordiv">
+                                <label class="popuplabel">Login With Email</label><br><br>
+                                <label>Email</label><br>
+                                <input id="email" name="email" type="text" value=""><br><br>
+                                <label>Password</label><br><br>
+                                <input id="pwdemail" name="pwdemail" type="password" value=""><br>
+                                <span class="errortext" id="errorspanemail"></span>                                    
+                            </div>
+                            <div>
+                                <button class="btncontinue" id="btncontinueemail" onclick="loginaction(`email`)">Continue</button>
+                            </div>
+                        </div>
                     </cfoutput>
                 </form>
             </div>
@@ -84,8 +103,8 @@
     </div>    
     <cfif session.username EQ "">
         <div class="loginBtn_container">
-            <a href="javascript:showLoginPopup()" class="loginBtn" id="loginBtn">Sign in</a>             
-        </div>
+            <a href="javascript:showLoginPopup()" class="loginBtn" id="loginBtn">Sign in</a>
+        </div>        
     <cfelse>   
         <div class="loginBtn_container">
             <a href="javascript:logout()" class="loginBtn" id="loginBtn">Log Out</a>             

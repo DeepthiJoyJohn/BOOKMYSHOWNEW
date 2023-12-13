@@ -69,11 +69,26 @@
                         <div id="signUpDiv">
                             <div class="arrowleft" onclick="redirecttopopup()"><i class="fa fa-arrow-left" aria-hidden="true"></i></div>
                             <div class="ordiv">
-                                <label class="popuplabel">Login With Email</label><br><br>
-                                <label>Email</label><br>
-                                <input id="email" name="email" type="text" value=""><br><br>
-                                <label>Password</label><br><br>
-                                <input id="pwdemail" name="pwdemail" type="password" value=""><br>
+                                <div class="divContent">
+                                    <label class="label">User Name:</label>
+                                    <input id="username" name="username" type="text" class="TxtBox" value="">
+                                </div>
+                                <div class="divContent">                                    
+                                    <input id="username" name="username" type="text" class="TxtBox" value="">
+                                </div>
+                                
+                                <div class="divContent">
+                                    <label class="label">Email</label>
+                                    <input id="email" name="email" type="text" class="TxtBox" value="">
+                                </div>
+                                <div class="divContent">
+                                    <label class="label">Password</label>
+                                    <input id="pwd" name="pwd" type="password" class="TxtBox" value="">
+                                </div>
+                                <div class="divContent">
+                                    <label class="label">Re_Enter Password</label>
+                                    <input id="repwd" name="repwd" type="password" class="TxtBox" value="">
+                                </div>
                                 <span class="errortext" id="errorspanemail"></span>                                    
                             </div>
                             <div>

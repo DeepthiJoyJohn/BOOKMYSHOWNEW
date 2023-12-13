@@ -53,5 +53,18 @@
 		</cfloop>	
 		<cfreturn local.soldSeats> 	
 	</cffunction>
+
+	<cffunction name="getEventSeatCount" access="remote" returntype="numeric">
+		<cfargument name="seatTypeId">
+		<cfquery name="qEventSeatCount" datasource="#application.datasoursename#">
+			SELECT IFNULL((seattypes.noofseats-COUNT(showseatdetailsid)),0) AS seatcount 
+			FROM showseatdetails 
+			INNER JOIN seattypes ON (seattypes.seattypeid=showseatdetails.seattypeid) 
+			WHERE eventhallid=<cfqueryparam value="#session.Hallid#" cfsqltype="cf_sql_integer"> 
+			AND showseatdetails.showid=<cfqueryparam value="#session.showId#" cfsqltype="cf_sql_integer"> 
+			AND showseatdetails.seattypeid=<cfqueryparam value="#arguments.seatTypeId#" cfsqltype="cf_sql_integer">	
+		</cfquery>
+		<cfreturn qEventSeatCount.seatcount>
+	</cffunction>
 </cfcomponent>
 

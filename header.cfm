@@ -69,30 +69,18 @@
                         <div id="signUpDiv">
                             <div class="arrowleft" onclick="redirecttopopup()"><i class="fa fa-arrow-left" aria-hidden="true"></i></div>
                             <div class="ordiv">
-                                <div class="divContent">
+                                <div class="div1">                                
                                     <label class="label">User Name:</label>
                                     <input id="username" name="username" type="text" class="TxtBox" value="">
-                                </div>
-                                <div class="divContent">                                    
-                                    <input id="username" name="username" type="text" class="TxtBox" value="">
-                                </div>
-                                
-                                <div class="divContent">
                                     <label class="label">Email</label>
-                                    <input id="email" name="email" type="text" class="TxtBox" value="">
-                                </div>
-                                <div class="divContent">
+                                    <input id="signUpemail" name="signUpemail" type="text" class="TxtBox" value="">                                
                                     <label class="label">Password</label>
-                                    <input id="pwd" name="pwd" type="password" class="TxtBox" value="">
-                                </div>
-                                <div class="divContent">
-                                    <label class="label">Re_Enter Password</label>
-                                    <input id="repwd" name="repwd" type="password" class="TxtBox" value="">
-                                </div>
-                                <span class="errortext" id="errorspanemail"></span>                                    
+                                    <input id="signUppwd" name="signUppwd" type="password" class="TxtBox" value="">                                
+                                    <span class="errortext" id="errorSpanSignUp"></span> 
+                                </div>                                   
                             </div>
                             <div>
-                                <button class="btncontinue" id="btncontinueemail" onclick="loginaction(`email`)">Continue</button>
+                                <button class="btncontinue" id="btncontinueemail" onclick="loginaction(`signup`)">Sign Up</button>
                             </div>
                         </div>
                     </cfoutput>

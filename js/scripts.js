@@ -144,6 +144,7 @@ function redirecttopopup(){
   document.getElementById("phonepopupdiv").style.display="none";
   document.getElementById("mainpopupdiv").style.display="block";
   document.getElementById("emailpopupdiv").style.display="none";
+  document.getElementById("signUpDiv").style.display="none";
 }
 function displayemailpopup(){
   document.getElementById("mainpopupdiv").style.display="none";

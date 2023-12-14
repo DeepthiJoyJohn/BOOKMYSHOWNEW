@@ -56,6 +56,19 @@ function loginaction(thisa){
         errorspanphone.textContent="Invalid Email!!!";
         return false;
       }   
+    }else if(thisa=="signup"){      
+      var mobileNo=document.getElementById("username").value;
+      var signUpemail=document.getElementById("signUpemail").value;
+      var password=document.getElementById("signUppwd").value;
+      var errorspanphone=document.getElementById("errorSpanSignUp");
+      var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;     
+      if(signUppwd=="" || username==""){
+        errorSpanSignUp.textContent="Password and username cant be null!!!";
+        return false;
+      }else if(reg.test(signUpemail) == false){
+        errorSpanSignUp.textContent="Invalid Email!!!";
+        return false;
+      }   
     }
  
   $.ajax({

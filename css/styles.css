@@ -1,9 +1,15 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+*{
+  font-family: 'roboto', sans-serif;
+}
 .close {
   font-size: 30px;
   cursor: pointer;
   padding-left:15px;
 }
-.popup {
+.popUp {
     display: none;
     position: absolute;
     top: -50;
@@ -52,7 +58,7 @@
   font-weight:550;
 }
 
-.popup-content {
+.popUpContent {
     position: absolute;
     top: 50%;
     left: 125%;
@@ -65,8 +71,6 @@
     display:flex;
 }
 .loginbtn{
-   
-    box-shadow: 0 1px 2px 0 rgba(0,0,0,.2);
     border: none;
     color: #fff;
     width: 100%;
@@ -160,7 +164,7 @@
    padding-top:140px;
    padding-left: 2rem;   
   }
-  .input-group{
+  .inputGroup{
     position:relative;
     padding-top: 50px;
     padding-left: 5rem;
@@ -186,7 +190,64 @@
   transform-origin:left;
   transition:transform;  
 }
+.eventTypesDiv {
+  display: flex;
+  height: 40px;
+  width: 100%;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: start;
+  justify-content: flex-start;
+  background: rgb(34, 37, 57);
+  overflow-x: auto;
+  white-space: nowrap;
+}
+.eventTypesDiv a {
+  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
+  cursor: pointer;
+  padding: 0px 10px;
+  position: relative;
+  text-decoration: none;
+  font-weight: 400;
+  color: rgb(204, 204, 204);
+  transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1) 0s;
+  margin-left:60px;
+}
 /* .input:focus ~ label {
   transform: translateY(-130%) scale(8.8);
 } */
-
+.footer-container {
+  background: #333338;
+  text-align: center;
+  height:185px;
+  
+}
+.footer-container p{
+  text-size:10px;
+  color:white;
+  padding:10px;
+  font-size:12px;
+  
+}
+.MovieMainHeading {
+  display: flex;
+  margin-left:20px;
+}
+.MovieMainHeading h2 {
+  word-break: break-word;
+  color: rgb(51, 51, 51);
+  font-family:Arial, Helvetica, sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.17;
+}
+.flex{
+  display: flex;
+  width:300px;
+}
+.igiRIk {
+  flex: 1 1 0%;
+  height: 1px;
+  background: rgb(93, 93, 95);
+}

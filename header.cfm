@@ -1,7 +1,9 @@
-<div id="loginPopup" class="popup">
-    <div class="popup-content">                
+<cfset local.movieTypeObject=createObject("component", "Components.events")> 
+<cfset local.eventTypes=local.movieTypeObject.getEventTypes()>
+<div id="loginPopup" class="popUp">
+    <div class="popUpContent">                
         <div class="right">
-            <div class="input-group">
+            <div class="inputGroup">
                 <form id="loginform">
                     <cfoutput>
                         <div id="mainpopupdiv">
@@ -27,11 +29,17 @@
                             <div>
                                 <button class="btncontinue" id="btncontinue" onclick="hide()">Continue</button>
                             </div>                            
-                            <div class="newsignup" id="newsignup">
+                            <div class="newSignup" id="newsignup">
                                 <a href="https://in.bookmyshow.com/terms-and-conditions">
                                     I agree to the Terms & Conditions & Privacy Policy
-                                </a>
+                                </a>                                 
                             </div> 
+                            <div class="newSignup" id="newsignup">
+                                <a href="javascript:showSignUpDiv()">
+                                    New to BookMyShow?Create an account
+                                </a>                                 
+                            </div> 
+                            
                         </div>
                         <div id="phonepopupdiv">
                             <div class="arrowleft" onclick="redirecttopopup()"><i class="fa fa-arrow-left" aria-hidden="true"></i></div>
@@ -58,6 +66,35 @@
                                 <button class="btncontinue" id="btncontinueemail" onclick="loginaction(`email`)">Continue</button>
                             </div>
                         </div>
+                        <div id="signUpDiv">
+                            <div class="arrowleft" onclick="redirecttopopup()"><i class="fa fa-arrow-left" aria-hidden="true"></i></div>
+                            <div class="ordiv">
+                                <div class="divContent">
+                                    <label class="label">User Name:</label>
+                                    <input id="username" name="username" type="text" class="TxtBox" value="">
+                                </div>
+                                <div class="divContent">                                    
+                                    <input id="username" name="username" type="text" class="TxtBox" value="">
+                                </div>
+                                
+                                <div class="divContent">
+                                    <label class="label">Email</label>
+                                    <input id="email" name="email" type="text" class="TxtBox" value="">
+                                </div>
+                                <div class="divContent">
+                                    <label class="label">Password</label>
+                                    <input id="pwd" name="pwd" type="password" class="TxtBox" value="">
+                                </div>
+                                <div class="divContent">
+                                    <label class="label">Re_Enter Password</label>
+                                    <input id="repwd" name="repwd" type="password" class="TxtBox" value="">
+                                </div>
+                                <span class="errortext" id="errorspanemail"></span>                                    
+                            </div>
+                            <div>
+                                <button class="btncontinue" id="btncontinueemail" onclick="loginaction(`email`)">Continue</button>
+                            </div>
+                        </div>
                     </cfoutput>
                 </form>
             </div>
@@ -67,7 +104,7 @@
 <header class="headerclass">
     <div class="logoContainer">
         <div class="logo">
-            <img src="Images/bookmyshow1.png"/>                    
+            <a href="index.cfm"><img src="Images/bookmyshow1.png"/></a>                    
         </div>
     </div>
     <div class="search_container">
@@ -78,27 +115,23 @@
         <div class="recent_search">
             
         </div>
-    </div>
-    
+    </div>    
     <cfif session.username EQ "">
         <div class="loginBtn_container">
-            <a href="javascript:showLoginPopup()" class="loginBtn" id="loginBtn">Sign in</a>             
-        </div>
-    <cfelse>
-        <div class="more_link">   
-                <span class="imgGuestDiv">             
-                    <img src="//in.bmscdn.com/m6/images/my-profile/bms-user.png" alt="Profile" class="imgGuest"><span class="imgGuestSpan">Hi,Guest</span> 
-                    <i class="fa solid fa-angle-down icon_more" aria-hidden="true"></i>
-                </span>
-                <div class="more_menu">
-                    <div class="more_menu_list">
-                        <div class="menu_nav_link">
-                            <button class="jwbLgg" onclick="logout()">Sign Out</button>                                               
-                        </div>
-                    </div>
-                </div>
-            </div>   
+            <a href="javascript:showLoginPopup()" class="loginBtn" id="loginBtn">Sign in</a>
+        </div>        
+    <cfelse>   
+        <div class="loginBtn_container">
+            <a href="javascript:logout()" class="loginBtn" id="loginBtn">Log Out</a>             
+        </div> 
     </cfif>
 </header> 
+<cfoutput>
+    <div class="eventTypesDiv">
+        <cfloop query="local.eventTypes">
+            <a href="#local.eventTypes.eventlistingpage#">#local.eventTypes.eventtype#</a>    
+        </cfloop>
+    </div>
+</cfoutput>
      
     

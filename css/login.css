@@ -41,3 +41,30 @@
   border-bottom: 1px solid #878787;
   outline:none; 
 }
+.divContent{
+  display: flex;
+  margin-top: 10px;
+  width:300px;
+}
+.label{
+  padding:10px;  
+  
+}
+.TxtBox{  
+    top: 50px;
+    left: 30px;
+    width: 100%;
+    padding: 13px 0px;
+    font-size: 14px;
+    overflow: hidden;
+    border-radius: 4px;
+    text-align: center;
+    display: inline-block;
+    font-weight: 500;
+    color: rgb(89, 89, 89);
+    background: rgb(255, 255, 255);
+    border: 1px solid rgb(153, 153, 153);
+    transition: background 0.5s ease-out 0s;
+    margin-top: 20px;
+    cursor: pointer;  
+}

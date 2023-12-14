@@ -17,10 +17,8 @@ main{
     padding: 10px 5px;
 }
 .logo{
-    width:200px;
-    position: relative;
-    top:2px;
-    
+    width:200px;   
+    top:2px;    
 }
 .logo img{
     width:120px;
@@ -76,13 +74,10 @@ a{
     min-width 300px;
     background-color: white;
     width:440px; 
-    height:32px;
-    margin:0px 10px;
+    height:32px;   
     border-radius: 1px;
     padding:0px 15px;
     box-shadow: -5px -5px 5px rgba(0,0,0,0.1),5px 5px 5px rgba(0,0,0,0.1);
-    position: relative;
-    margin-left:-200px;
 }
 .search_container i{
     color:#2874f0;
@@ -132,7 +127,9 @@ a{
     border-radius: 4px;
     border: 1px solid rgb(248, 68, 100);
     display: block;
-    margin-left:300px;
+    float:right;
+    margin-left:200px;
+   
 }
 
 
@@ -380,8 +377,82 @@ a{
     object-fit: cover;
     transform: scale(1.3);
 }
+.eventContainer{
+    height:400px;    
+    width:99%;
+}
+.eventContainerList{
+    display: flex;
+    height:410;
+    cursor: pointer;
+    
+}
+.eventContainerListItem{
+    display:flex;
+    overflow: hidden;
+}
+.eventContainerListItemSub{
+    background-color: white;
+    min-width: 210px;
+    max-width: 225px;
+    height:310px;
+    position: relative;
+    display:flex;
+    /* justify-content: center; */
+    align-items: center;
+    flex-direction: column;
+    
+}
+.eventContainerListItemSub_ImageDiv{
+    height:510;
+    width:220px;
+    text-align: center;
+    display: flex;
+    align-items: center;  
+    justify-content: center;
+    padding: 10px;
+    
+ }
+ .eventContainerListItemSub_ImageDiv img {
+    width:100%;
+    max-height: 610px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    
+}
+ .eventContainerListItemSub_Description{
+    height:100px;  
+    width: 210px;
+    position:relative;
+    bottom:0;
+    text-align: center;
+     
+}
+.eventContainerListItemSub_Description_Name{
+    
+    margin: 0px 0px 4px;
+    word-break: break-word;
+    color: rgb(34, 34, 34);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.33;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+.eventContainerListItemSub_Description_Name_Brand{
+    color:#898686;
+    font:12px;
+    padding-top: 7px;
+    font-family: Arial, Helvetica, sans-serif;
+}
 .bestofElectronic_Container{
-    height:510px;    
+    height:400px;    
     width:99%;
 }
 .bestofElectronic_Container1{
@@ -400,7 +471,7 @@ a{
 .bestofElectronicmoreOption img{
     height:100%;
     width:100%;
-    
+        
     
 }
 .bestofElectronic_items{
@@ -442,7 +513,7 @@ a{
 }
 .bestofElectronic_list{
     display: flex;
-    height:710;
+    height:410;
     
 }
 .bestofElectronic_image_Product{
@@ -461,15 +532,26 @@ a{
     display: flex;
     justify-content: center;
     align-items: center;
-    height:400px;
+    
     
 }
 .bestofElectronicProduct_name{
-    font-size: 15px;
-    padding: 5px;
-    letter-spacing: 0.5px;  
     
+    margin: 0px 0px 4px;
+    word-break: break-word;
+    color: rgb(34, 34, 34);
+    font-family: Roboto;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.33;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
 }
+    
+
 .bestofElectronicProduct_name1{
     font-size: 15px;
     padding: 5px;
@@ -490,8 +572,6 @@ a{
 .bestofElectronic_product_item{
     display:flex;
     overflow: hidden;
-   
-    
 }
 .cart-badge {  
     right: 0;
@@ -664,7 +744,7 @@ a{
         position: relative;
         overflow: hidden;
         cursor: pointer;         
-        top:100px;
+        top:40px;
         
     }
     .diGRHt {
@@ -681,4 +761,22 @@ a{
     .flex{
         display: flex;
     }
-    
+    .image_Event_div{
+        background-color: rgb(10, 10, 10);
+        min-width: 1100px;
+        max-width: 825px;
+        height:450px;
+        position: relative;
+        display:flex;        
+        align-items: center;
+        flex-direction: column;        
+    }
+    .image_Event{
+        height:1000;
+        width:1000px;
+        text-align: center;
+        display: flex;
+        align-items: center;  
+        justify-content: center;
+        padding: 10px;        
+     }

@@ -25,6 +25,7 @@
                                         <cfset local.eventName=#resultEvents.eventname#>
                                         <cfset local.eventStartTime=#resultEvents.eventstarttime#>
                                         <cfset local.eventStartDate=#resultEvents.eventstartdatedisplay#>
+                                        <cfset local.StartDate=#resultEvents.startdate1#>
                                         <cfset local.eventId=#resultEvents.eventid#>
                                         <div class="imageDiv1" onclick="redirectToEventDetail(#resultEvents.eventid#)">
                                             <div class="imageDiv2">
@@ -37,7 +38,7 @@
                         </div>    
                         <div class="eventBookBtnDiv">
                             <h3 class="eventName">#local.eventName# </h3>
-                            <h3 class="eventTIme">#local.eventStartDate# at #local.eventStartTime#</h3>
+                            <h3 class="eventTIme">#local.eventStartDate# at #local.eventStartTime#</h3>                         
                             <button data-phase="postRelease" class="bookEventBtn" onclick="redirectToTicketBooking(#local.eventId#)">
                                 <div>
                                     <span>

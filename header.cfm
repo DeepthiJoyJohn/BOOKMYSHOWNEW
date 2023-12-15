@@ -23,7 +23,7 @@
                             <div class="ordiv">OR</div>
                             <div class="ordiv">
                                 <img alt="indian flag" src="//in.bmscdn.com/webin/common/icons/indianflag.svg">
-                                <input id="mobileNo" type="tel" pattern="[0-9]*" placeholder="Continue with mobile number" maxlength="10" onkeyup="checklength()" onclick="myFunction()" value="">
+                                <input id="mobileNo" type="tel" pattern="[0-9]*" placeholder="Continue with mobile number" maxlength="10" onkeyup="checklength()" value="">
                             </div>
                             <span id="errorText" class="errortext"></span><br>
                             <div>
@@ -80,7 +80,7 @@
                                 </div>                                   
                             </div>
                             <div>
-                                <button class="btncontinue" id="btncontinueemail" onclick="loginaction(`signup`)">Sign Up</button>
+                                <button class="btncontinue" id="btnSignUp" onclick="loginaction(`signup`)">Sign Up</button>
                             </div>
                         </div>
                     </cfoutput>

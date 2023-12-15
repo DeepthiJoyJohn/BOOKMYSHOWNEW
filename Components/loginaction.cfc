@@ -1,13 +1,16 @@
 <cfcomponent> 
-	<cffunction name="checkuser" access="remote">
-		<cfargument name="mobileNo" required="true">
+	<cffunction name="checkuser" access="remote" returntype="numeric">
+		<cfargument name="username" required="true">
 		<cfargument name="password" required="true">
+		<cfargument name="btnValue" required="true">
 		<cfquery name="qcheckuser" datasource="#application.datasoursename#">
 			SELECT userid,userroleid,username
 			from user
 			WHERE
-			username=<cfqueryparam value="#arguments.mobileNo#" cfsqltype="cf_sql_varchar">
-			AND pwd=<cfqueryparam value="#arguments.password#" cfsqltype="cf_sql_varchar">
+			username=<cfqueryparam value="#arguments.username#" cfsqltype="cf_sql_varchar">
+			<cfif arguments.btnValue NEQ "signup">
+				AND pwd=<cfqueryparam value="#arguments.password#" cfsqltype="cf_sql_varchar">
+			</cfif>
 		</cfquery>
 		<cfif qcheckuser.recordCount>
 			<cfloop query="qcheckuser">
@@ -17,6 +20,28 @@
 			</cfloop>		
 		</cfif>
 		<cfreturn qcheckuser.recordCount>
+	</cffunction>
+	<cffunction name="signUpSignIn" access="remote" returntype="numeric">
+		<cfargument name="username" required="true">
+		<cfargument name="password" required="true">
+		<cfargument name="signupemail" required="true">
+		<cfargument name="btnValue" required="true">
+		<cfset local.check=0>
+		<cfset local.check=checkuser(arguments.username,arguments.password,arguments.btnValue)>
+		<cfif arguments.btnValue EQ "signup" AND local.check EQ 0>
+			<cfquery name="qSignUp" datasource="#application.datasoursename#">
+				INSERT
+				INTO 
+				user (username,email,pwd,userroleid)
+				VALUES (<cfqueryparam value="#arguments.username#" cfsqltype="cf_sql_varchar">,
+					    <cfqueryparam value="#arguments.signupemail#" cfsqltype="cf_sql_varchar">,
+						<cfqueryparam value="#arguments.password#" cfsqltype="cf_sql_varchar">,
+						<cfqueryparam value="1000" cfsqltype="cf_sql_integer">					
+					   ) 
+			</cfquery>
+			<cfset local.check1=checkuser(arguments.username,arguments.password,arguments.btnValue)>
+		</cfif>
+		<cfreturn local.check>
 	</cffunction>
 
 	<cffunction name="loginwithgoogle" access="remote">

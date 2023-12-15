@@ -4,7 +4,7 @@
 		<cfargument name="eventtypeid">
 		<cfquery name="qGetEvents" datasource="#application.datasoursename#">
 			SELECT event.*,EXTRACT(HOUR FROM eventtime) AS "Hours",EXTRACT(MINUTE FROM eventtime) AS "Minutes",TIME_FORMAT(startdate, '%h:%i %p') AS eventstarttime,
-			DATE_FORMAT(startdate, '%dth %b %Y') AS eventstartdatedisplay
+			DATE_FORMAT(startdate, '%dth %b %Y') AS eventstartdatedisplay,DATE_FORMAT(enddate,'%Y-%m-%d') AS enddate1
 			FROM event 
 			WHERE eventtypeid=<cfqueryparam value="#arguments.eventtypeid#" cfsqltype="cf_sql_integer">
 			<cfif arguments.eventId NEQ 0>

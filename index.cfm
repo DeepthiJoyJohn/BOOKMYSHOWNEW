@@ -8,7 +8,7 @@
         <link rel="stylesheet" href="css/login.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
         <script src="js/loginaction.js"></script>
-        <script src="js/jquery-3.6.0.min.js"></script>          
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>         
     </head>
     <body>
         <cfinclude template="header.cfm">  

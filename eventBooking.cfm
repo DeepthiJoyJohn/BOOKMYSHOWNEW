@@ -25,7 +25,7 @@
                                         <cfset local.eventName=#resultEvents.eventname#>
                                         <cfset local.eventStartTime=#resultEvents.eventstarttime#>
                                         <cfset local.eventStartDate=#resultEvents.eventstartdatedisplay#>
-                                        <cfset local.StartDate=#resultEvents.startdate1#>
+                                        <cfset local.EndDate=#resultEvents.enddate1#>
                                         <cfset local.eventId=#resultEvents.eventid#>
                                         <div class="imageDiv1" onclick="redirectToEventDetail(#resultEvents.eventid#)">
                                             <div class="imageDiv2">
@@ -35,11 +35,15 @@
                                     </div>
                                 </cfloop>
                             </div>                            
-                        </div>    
+                        </div> 
+                        <cfset local.disable="">
+                        <cfif local.EndDate GT (dateFormat(now(),"yyyy-mm-dd"))>
+                            <cfset local.disable="disabled">
+                        </cfif>
                         <div class="eventBookBtnDiv">
                             <h3 class="eventName">#local.eventName# </h3>
                             <h3 class="eventTIme">#local.eventStartDate# at #local.eventStartTime#</h3>                         
-                            <button data-phase="postRelease" class="bookEventBtn" onclick="redirectToTicketBooking(#local.eventId#)">
+                            <button data-phase="postRelease" #local.disable# class="bookEventBtn" onclick="redirectToTicketBooking(#local.eventId#)">
                                 <div>
                                     <span>
                                         Book 

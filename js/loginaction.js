@@ -131,7 +131,15 @@ function redirecttoseatpage(hallid,showId,eventTypeId){
       if(eventTypeId==1){
         window.location.href="seatSelectionPage.cfm"
       }else{
-        window.location.href="eventSeats.cfm"
+        $.ajax({
+              type: "POST",
+              url: 'Components/seats.cfc?method=clearSelectedSeats',
+              cache: false,
+              success: function(){          
+                window.location.href="eventSeats.cfm"  
+              }
+            });
+        
       }      
     }
   });  

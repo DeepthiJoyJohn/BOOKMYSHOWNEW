@@ -7,11 +7,12 @@
         <link rel="stylesheet" href="css/ticketbooking.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/> 
+        <script src="js/eventSeats.js"></script>  
         <script src="js/jquery-3.6.0.min.js"></script> 
     </head>   
     <cfoutput> 
         <body>  
-            <form>       
+            <form  method="post" action="">       
                 <cfif session.eventid NEQ "">
                     <cfinvoke component="BOOKMYSHOWNEW/Components/events" method="getEventsFromDb" returnvariable="resultEvents">
                         <cfinvokeargument name="eventId" value="#session.eventid#">
@@ -50,6 +51,7 @@
                         </div>               
                     </section>   
                     <cfinvoke component="BOOKMYSHOWNEW/Components/seats" method="getSeatTypes" returnvariable="resultSeatTypes"> 
+                        <cfinvokeargument name="seatTypeId" value="3">
                     </cfinvoke>
                     <cfinvoke component="BOOKMYSHOWNEW/Components/seats" method="getSoldSeats" returnvariable="resultSoldSeats"> 
                     </cfinvoke>                   
@@ -57,24 +59,49 @@
                         <div class="eventBookHead">SELECT YOUR CATEGORY</div>
                         <div class="seats">
                             <table>
-                                <tbody>                                    
+                                <tbody>              
                                     <cfloop query="resultSeatTypes"> 
                                         <cfinvoke component="BOOKMYSHOWNEW/Components/seats" method="getEventSeatCount" returnvariable="resultEventSeatCount">
                                             <cfinvokeargument name="seatTypeId" value="#resultSeatTypes.seattypeid#">
                                         </cfinvoke>
-                                        <cfset local.seatCountTxt = 0>                                                                                                                                                                                                                                                                                                          
+                                        <cfinvoke component="BOOKMYSHOWNEW/Components/seats" method="getEventSeatsSelected" returnvariable="countOfSeats"> 
+                                            <cfinvokeargument name="seatTypeId" value="#resultSeatTypes.seattypeid#">
+                                        </cfinvoke>
+                                        <cfif  StructKeyExists(form,"#resultSeatTypes.seattypeid#_add")>                                         
+                                            <cfinvoke component="BOOKMYSHOWNEW/Components/seats" method="addEventSeats" returnvariable="countOfSeats"> 
+                                                <cfinvokeargument name="seatTypeId" value="#resultSeatTypes.seattypeid#">
+                                                <cfinvokeargument name="seatPrice" value="#resultSeatTypes.priceperseat#">
+                                            </cfinvoke>
+                                            <cfinvoke component="BOOKMYSHOWNEW/Components/seats" method="getEventSeatCount" returnvariable="resultEventSeatCount">
+                                                <cfinvokeargument name="seatTypeId" value="#resultSeatTypes.seattypeid#">
+                                            </cfinvoke>
+                                        </cfif>  
+                                        <cfset local.disable="">
+                                        
+                                        <cfif  StructKeyExists(form,"#resultSeatTypes.seattypeid#_minus")>                                         
+                                            <cfinvoke component="BOOKMYSHOWNEW/Components/seats" method="removeEventSeats" returnvariable="countOfSeats"> 
+                                                <cfinvokeargument name="seatTypeId" value="#resultSeatTypes.seattypeid#">                                                
+                                            </cfinvoke> 
+                                            <cfinvoke component="BOOKMYSHOWNEW/Components/seats" method="getEventSeatCount" returnvariable="resultEventSeatCount">
+                                                <cfinvokeargument name="seatTypeId" value="#resultSeatTypes.seattypeid#">
+                                            </cfinvoke>
+                                        </cfif>  
+                                        <cfif resultEventSeatCount EQ 0>
+                                            <cfset local.disable="disabled">
+                                        </cfif>   
+                                        ava#resultEventSeatCount# book#countOfSeats#                                                                                                                                                                                                                                                      
                                         <tr>
                                             <td class="seatP" colspan="11">#resultSeatTypes.seattype#-Rs.#resultSeatTypes.priceperseat#<td>                                                                                                                     
-                                        </tr>  
+                                        </tr> 
                                         <tr>
                                             <td>                                            
                                                 <div class="addMinusBtn">
-                                                    <cfif local.seatCountTxt gt 0>
-                                                        <button class="minus-button" name="minus-button" value="#resultEventSeatCount#">-</button>
-                                                        <input class="quantity-input"  type="text" id="" value="#local.seatCountTxt#">
-                                                        <button class="plus-button" name="plus-button" value="#resultEventSeatCount#">+</button>
+                                                    <cfif countOfSeats GT 0>
+                                                        <button class="minus-button" name="#resultSeatTypes.seattypeid#_minus" value="#resultEventSeatCount#">-</button>
+                                                        <input class="quantity-input"  type="text" id="" value="#countOfSeats#">
+                                                        <button class="plus-button" #local.disable# name="#resultSeatTypes.seattypeid#_add" value="#resultEventSeatCount#">+</button>
                                                     <cfelse>
-                                                        <button class="addBtn" type="submit" name="addSeat" id="">Add</button>
+                                                        <button class="addBtn" type="submit" name="#resultSeatTypes.seattypeid#_add" id="#resultSeatTypes.seattypeid#">Add</button>
                                                     </cfif>
                                                 </div>
                                             </td>   
@@ -84,14 +111,15 @@
                             </table>
                         </div>
                         <div>
-                            <button class="btnProceed"  onclick="loginaction(`email`)">Book</button>
+                            <button class="btnProceed"  onclick="bookEventSeats()">Book</button>
                         </div>
                     </section>                             
                 </cfif>   
                 <script src="js/javascript.js" type="module"></script>   
                 <script src="js/scripts.js"></script>              
                 <script src="js/loginaction.js"></script>
-                <script src="js/seats.js"></script>   
+                <script src="js/seats.js"></script>  
+                 
             </form>
         </body> 
         <cfinclude template="footer.cfm"> 

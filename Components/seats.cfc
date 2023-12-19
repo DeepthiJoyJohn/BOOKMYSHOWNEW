@@ -120,7 +120,7 @@
 		<cfreturn local.seatcount>	
 	</cffunction>
 
-	<cffunction name="clearSelectedSeats" access="remote">
+	<cffunction name="clearSelectedSeats" access="remote" returntype="numeric">
 		<cfquery name="qclearSelectedSeats" datasource="#application.datasoursename#">
 			DELETE
 			FROM 
@@ -128,6 +128,7 @@
 			WHERE userid=<cfqueryparam value="#session.userid#" cfsqltype="cf_sql_integer">
 			AND SHOWSEATDETAILS.status=<cfqueryparam value="selected" cfsqltype="cf_sql_varchar">
 		</cfquery>	
+		<cfreturn 1>
 	</cffunction>
 
 	<cffunction name="bookEventSeats" access="remote">

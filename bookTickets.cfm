@@ -1,4 +1,4 @@
- <html>
+  <html>
     <head>
         <title> Movie Tickets, Plays, Sports, Events &amp; Cinemas near Delhi-NCR - BookMyShow Delhi-NCR.</title>
         <link rel="shortcut icon" href="Images/Icon/icon1.png">

@@ -512,6 +512,7 @@ tbody, td, tfoot, th, thead, time, tr, ul, var, video {
   text-align: center;
   width: 40px;
   margin: 0 10px;
+  border-radius: 25px;
 }
 .plus-button {
   background-color: #f0f0f0;

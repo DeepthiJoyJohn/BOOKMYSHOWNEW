@@ -49,6 +49,7 @@
                     </div>               
                 </section>   
                 <cfinvoke component="BOOKMYSHOWNEW/Components/seats" method="getSeatTypes" returnvariable="resultSeatTypes"> 
+                    <cfinvokeargument name="seatTypeId" value="0">
                 </cfinvoke>
                 <cfinvoke component="BOOKMYSHOWNEW/Components/seats" method="getSoldSeats" returnvariable="resultSoldSeats"> 
                 </cfinvoke>

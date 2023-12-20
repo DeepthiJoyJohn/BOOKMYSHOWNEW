@@ -1,6 +1,6 @@
-$(document).ready( function() {
-  
-})
+$(document).ready(function () {
+  alert("hi");
+});
 
 function bookEventSeats(){
   alert("d");

@@ -35,7 +35,8 @@
                         </div> 
                     </div>               
                 </section>                
-                <form id="dateContainerForm" action="bookTickets.cfm" method="post">                
+                <form id="dateContainerForm" action="bookTickets.cfm" method="post">   
+                            
                     <cfif  StructKeyExists(form,"preveBtnDate")> 
                         <cfif session.todaydate GT now()>                            
                             <cfset session.todaydate = dateAdd('d', -1, session.todaydate)>	

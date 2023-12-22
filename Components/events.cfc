@@ -70,5 +70,23 @@
 		</cfquery>
 		<cfreturn qGetShowTime> 		
 	</cffunction>
+
+	<cffunction name="setDatesSession" access="remote" returntype="query">
+		<cfargument name="btnName">
+		<cfif arguments.btnName EQ "Today">
+			<cfset local.date1= DateFormat(now(), "yyyy-mm-dd")>
+		<cfelse>
+			<cfset local.newDate = DateAdd("d", 1, now())>
+			<cfset local.date2= DateFormat(local.newDate, "yyyy-mm-dd")>
+		</cfif>
+		<cfquery name="qGetEventsFilter" datasource="#application.datasoursename#">
+			SELECT event.*,EXTRACT(HOUR FROM eventtime) AS "Hours",EXTRACT(MINUTE FROM eventtime) AS "Minutes",TIME_FORMAT(startdate, '%h:%i %p') AS eventstarttime,
+			DATE_FORMAT(startdate, '%dth %b %Y') AS eventstartdatedisplay,DATE_FORMAT(enddate,'%Y-%m-%d') AS enddate1
+			FROM event			
+			WHERE eventtypeid=<cfqueryparam value="#session.eventTypeId#" cfsqltype="cf_sql_integer">
+		    AND event.eventid=<cfqueryparam value="#session.eventid#" cfsqltype="cf_sql_integer">			
+		</cfquery>
+		<cfreturn qGetEventsFilter>
+	</cffunction>
 </cfcomponent>
 

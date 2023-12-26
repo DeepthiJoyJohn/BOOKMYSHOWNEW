@@ -117,7 +117,7 @@
 <cfoutput>
     <div class="eventTypesDiv">
         <cfloop query="local.eventTypes">
-            <a href="#local.eventTypes.eventlistingpage#">#local.eventTypes.eventtype#</a>    
+            <a href="javascript:redirectToPage('#local.eventTypes.eventlistingpage#','#local.eventTypes.eventtypeid#')">#local.eventTypes.eventtype#</a>    
         </cfloop>
     </div>
 </cfoutput>

@@ -18,8 +18,7 @@
                 <cfset local.resultEvents=local.movieObject.getEventsFromDb(0,2)>  
                 <cfset local.resultSeats=local.seatObject.getSeatTypes(3)>
                 <main class="eventDescBody"> 
-                <cfdump var="#session#">   
-                                             
+                <cfdump var="#session#">     
                     <div class="topImageDiv">  
                         <img class="topImage" src="https://assets-in.bmscdn.com/promotions/cms/creatives/1702117592908_harishankar1240x300.jpg">
                     </div> 
@@ -36,7 +35,7 @@
                                 </div>
                                 <div class="dateDetailFilter" id="dateDetailFilter">
                                     <button type="button" class="filterSub" name="Today" onclick="setDates(this.name)">Today</button>
-                                    <button type="submit" class="filterSub" name="Tomorrow" onclick="setDates(this.name)">Tomorrow</button>
+                                    <button type="button" class="filterSub" name="Tomorrow" onclick="setDates(this.name)">Tomorrow</button>
                                 </div>
                                
                             </div>
@@ -79,7 +78,7 @@
                         <div id="test"> sd</div>
                         <div class="filterRight">
                             <h1 class="headingEvents">Events</h1>
-                            <div class="eventsList">
+                            <div class="eventsList" id="eventList">
                                 <cfloop query="#local.resultEvents#">
                                     <div class="eventContainerListItemSub" onclick="redirectToEventDetail(#local.resultEvents.eventid#,2)">
                                         <div class="eventContainerListItemSub_ImageDiv">
@@ -96,11 +95,9 @@
                             </div>
                         </div>                        
                     </div>
-                    
                 </main>
             </form> 
             <cfdump var="#form#">
-           
             <script src="js/loginaction.js"></script> 
         </body> 
         <cfinclude template="footer.cfm"> 

@@ -73,20 +73,33 @@
 
 	<cffunction name="setDatesSession" access="remote" returntype="query">
 		<cfargument name="btnName">
+		<cfset local.date1="">
+		<cfset local.date2="">
 		<cfif arguments.btnName EQ "Today">
 			<cfset local.date1= DateFormat(now(), "yyyy-mm-dd")>
-		<cfelse>
+		</cfif>
+		<cfif arguments.btnName EQ "Tomorrow">
 			<cfset local.newDate = DateAdd("d", 1, now())>
 			<cfset local.date2= DateFormat(local.newDate, "yyyy-mm-dd")>
 		</cfif>
 		<cfquery name="qGetEventsFilter" datasource="#application.datasoursename#">
 			SELECT event.*,EXTRACT(HOUR FROM eventtime) AS "Hours",EXTRACT(MINUTE FROM eventtime) AS "Minutes",TIME_FORMAT(startdate, '%h:%i %p') AS eventstarttime,
-			DATE_FORMAT(startdate, '%dth %b %Y') AS eventstartdatedisplay,DATE_FORMAT(enddate,'%Y-%m-%d') AS enddate1
-			FROM event			
-			WHERE eventtypeid=<cfqueryparam value="#session.eventTypeId#" cfsqltype="cf_sql_integer">
-		    AND event.eventid=<cfqueryparam value="#session.eventid#" cfsqltype="cf_sql_integer">			
-		</cfquery>
-		<cfreturn qGetEventsFilter>
+			DATE_FORMAT(startdate, '%dth %b %Y') AS eventstartdatedisplay,DATE_FORMAT(enddate,'%Y-%m-%d') AS enddate1,priceperseat
+			FROM event 
+			INNER JOIN shows ON (event.eventid=shows.eventid),seattypes 			
+			WHERE eventtypeid=<cfqueryparam value="#session.eventTypeId#" cfsqltype="cf_sql_integer"> 
+			AND seattypes.seattypeid='3'
+			<cfif session.eventid NEQ 0>
+		    	AND event.eventid=<cfqueryparam value="#session.eventid#" cfsqltype="cf_sql_integer">
+			</cfif>
+			<cfif local.date1 NEQ "">	
+				AND DATE_FORMAT(shows.showDAte,'%Y-%m-%d') =<cfqueryparam value="#local.date1#" cfsqltype="cf_sql_date">
+			</cfif>
+			<cfif local.date2 NEQ "">	
+				AND DATE_FORMAT(shows.showDAte,'%Y-%m-%d') =<cfqueryparam value="#local.date2#" cfsqltype="cf_sql_date">
+			</cfif>		
+		</cfquery>		
+    	<cfreturn qGetEventsFilter>
 	</cffunction>
 </cfcomponent>
 

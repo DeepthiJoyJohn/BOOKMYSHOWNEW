@@ -17,6 +17,19 @@ function redirectToTicketBooking(){
   });
 	
 }
+function redirectToPage(eventPageName,eventTypeId){
+  alert(eventPageName);
+  $.ajax({
+    type: "POST",
+    url: 'Components/loginaction.cfc?method=setEventSession',
+    cache: false,
+    data:{eventId:0,eventTypeId:eventTypeId},
+    success: function(){          
+      window.location.href=eventPageName; 
+    }
+  });
+
+}
 
 function loginwithgoogle(){  
   $.ajax({

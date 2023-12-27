@@ -9,7 +9,8 @@
 			<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>		
 			<script src="js/home.js" type="text/javascript"></script>
 		</head>
-		<cfinvoke component="BOOKMYSHOW.Components.bookmyshow" method="getlanguage" returnVariable="languages">
+		<cfset local.movieObject=createObject("component", "Components.events")>
+		<cfset languages=local.movieObject.getLanguages()>
 		<body>
 			<header id="header">			
 				<div class="d-flex flex-column">
@@ -63,10 +64,10 @@
 																#slno#	
 															</td>
 															<td>
-																#languages.languagename[i]#
+																#languages.language[i]#
 															</td>
 															<td>
-																<a title="DETELE" href="Components/adminsettings.cfc?method=deletelanguages&id=#languages.id[i]#">
+																<a title="DETELE" href="Components/adminsettings.cfc?method=deletelanguages&id=#languages.languageid[i]#">
 																<i class="bx bx-trash" aria-hidden="true"></i>
 															</td>
 														</tr>

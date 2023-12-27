@@ -48,44 +48,45 @@ function extractValuesFromWDDX(wddxData) {
   }
 }
 
-// function setDates(btnname){
-//   $.ajax({
-//     type: "POST",
-//     url: 'Components/events.cfc?method=setDatesSession',
-//     cache: false,
-//     data:{btnName:btnname},
-//     success: function(response){ 
-//       alert(response);
-//       var extractedValues = extractValuesFromWDDX(response);
-//       Object.keys(extractedValues).forEach(function(key) {
-//         alert(extractedValues[key]);
-//         if(key=="eventid"){
-//           var eventid=extractedValues[key];
-//         }else if(key=='eventimg'){
-//           var eventimg=extractedValues[key];
-//         }       
-//         var elements=document.getElementsByClassName("eventsList");  
-//         for (var i = 0; i < elements.length; i++) {
-//           elements[i].innerHTML = `<div class="eventContainerListItemSub" onclick="redirectToEventDetail(eventid,2)">
-//                                       <div class="eventContainerListItemSub_ImageDiv">
-//                                           <img  src="${eventimg}"/>                                            
-//                                       </div>
-//                                     </div>`;
-//         }
+
+function setDates(btnname){   
+ 
+    var noofbtns = document.getElementsByClassName("filterSub");
+    var datebtn="";
+    var lanstr="";
+    var catstr="";
+    for(var i = 0; i < ((noofbtns.length)); i++){ 
+      if((noofbtns[i].name==btnname) && (noofbtns[i].style.backgroundColor!="red")){
+        noofbtns[i].style.backgroundColor="red";
+        noofbtns[i].style.color="white";
         
-//       });
-      
-//     }
-//   });
-// }
-function setDates(btnname){
-  alert(btnname);
+      }else if((noofbtns[i].name==btnname) && (noofbtns[i].style.backgroundColor=="red")){
+        noofbtns[i].style.backgroundColor="";
+        noofbtns[i].style.color="";
+      }
+      if(noofbtns[i].style.backgroundColor=="red"){
+        var datebtn= datebtn+noofbtns[i].name+',';
+        var strFirstThree = noofbtns[i].name.substring(0,3);
+        if(strFirstThree=="lan"){
+           lanstr=lanstr+noofbtns[i].id+','; 
+        }else if(strFirstThree=="cat"){
+          catstr=lanstr+noofbtns[i].id+','; 
+        }
+      }      
+    }
+    if(lanstr != ""){
+      lanstr = lanstr.slice(0, -1);
+    }
+    if(catstr != ""){
+      catstr = catstr.slice(0, -1);
+    }
+   
     $.ajax({
       type: "POST",
       url: 'Components/events.cfc?method=setDatesSession',
       cache: false,      
-      data:{btnName:btnname},      
-      success: function(response){ 
+      data:{btnName:datebtn,selectedLanguage:lanstr,selectedCategory:catstr},      
+      success: function(response){        
         document.getElementById("eventList").innerHTML="";
         var parser = new DOMParser();
         var xmlDoc = parser.parseFromString(response, "text/xml");
@@ -107,9 +108,8 @@ function setDates(btnname){
           }
         }
         var eventhtml="";
-        events.forEach(function (event) {             
-              alert(event.EVENTID); 
-           eventhtml ='<div class="eventContainerListItemSub" onclick="redirectToEventDetail('+event.EVENTID+',2)">'+
+        events.forEach(function (event) {   
+           eventhtml +='<div class="eventContainerListItemSub" onclick="redirectToEventDetail('+event.EVENTID+',2)">'+
                         '<div class="eventContainerListItemSub_ImageDiv">'+
                         '<img  src="'+event.EVENTIMG+'"/>'+                                                                    
                         '</div>'+
@@ -121,13 +121,11 @@ function setDates(btnname){
                         '</div>'+ 
                       '</div>';
            document.getElementById("eventList").innerHTML=eventhtml;
-        });
-        
-        
+        });        
       }
     });
   }
-  
+
 function bookEventSeats(){
   alert("d");
   $.ajax({

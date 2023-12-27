@@ -119,6 +119,10 @@
         <cfloop query="local.eventTypes">
             <a href="javascript:redirectToPage('#local.eventTypes.eventlistingpage#','#local.eventTypes.eventtypeid#')">#local.eventTypes.eventtype#</a>    
         </cfloop>
+        <cfif session.userrole EQ "1001">
+            <a href="addEvents.cfm">Add Events</a>
+            <a href="languages.cfm">Languages</a>
+        </cfif>
     </div>
 </cfoutput>
      

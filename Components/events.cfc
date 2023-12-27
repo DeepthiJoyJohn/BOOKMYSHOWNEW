@@ -72,13 +72,15 @@
 	</cffunction>
 
 	<cffunction name="setDatesSession" access="remote" returntype="query">
-		<cfargument name="btnName">
+		<cfargument name="btnName">	
+		<cfargument name="selectedLanguage">	
+		<cfargument name="selectedCategory">	
 		<cfset local.date1="">
 		<cfset local.date2="">
-		<cfif arguments.btnName EQ "Today">
+		<cfif Find("Today", "#arguments.btnName#")>
 			<cfset local.date1= DateFormat(now(), "yyyy-mm-dd")>
 		</cfif>
-		<cfif arguments.btnName EQ "Tomorrow">
+		<cfif Find("Tomorrow", "#arguments.btnName#")>
 			<cfset local.newDate = DateAdd("d", 1, now())>
 			<cfset local.date2= DateFormat(local.newDate, "yyyy-mm-dd")>
 		</cfif>
@@ -86,20 +88,46 @@
 			SELECT event.*,EXTRACT(HOUR FROM eventtime) AS "Hours",EXTRACT(MINUTE FROM eventtime) AS "Minutes",TIME_FORMAT(startdate, '%h:%i %p') AS eventstarttime,
 			DATE_FORMAT(startdate, '%dth %b %Y') AS eventstartdatedisplay,DATE_FORMAT(enddate,'%Y-%m-%d') AS enddate1,priceperseat
 			FROM event 
-			INNER JOIN shows ON (event.eventid=shows.eventid),seattypes 			
+			LEFT JOIN shows ON (event.eventid=shows.eventid),seattypes 			
 			WHERE eventtypeid=<cfqueryparam value="#session.eventTypeId#" cfsqltype="cf_sql_integer"> 
 			AND seattypes.seattypeid='3'
 			<cfif session.eventid NEQ 0>
 		    	AND event.eventid=<cfqueryparam value="#session.eventid#" cfsqltype="cf_sql_integer">
 			</cfif>
-			<cfif local.date1 NEQ "">	
-				AND DATE_FORMAT(shows.showDAte,'%Y-%m-%d') =<cfqueryparam value="#local.date1#" cfsqltype="cf_sql_date">
+			<cfif Find("Today", "#arguments.btnName#") OR  Find("Tomorrow", "#arguments.btnName#")>	
+				AND DATE_FORMAT(shows.showDAte,'%Y-%m-%d') IN ('#local.date1#','#local.date2#')
 			</cfif>
-			<cfif local.date2 NEQ "">	
-				AND DATE_FORMAT(shows.showDAte,'%Y-%m-%d') =<cfqueryparam value="#local.date2#" cfsqltype="cf_sql_date">
-			</cfif>		
+			<cfif Find("Free", "#arguments.btnName#")>	
+				AND priceperseat IN ('0') 
+			</cfif>	
+			<cfif Find("0-500", "#arguments.btnName#")>	
+				AND (priceperseat < 500 AND priceperseat > 0)
+			</cfif>
+			<cfif Find("lan", "#arguments.btnName#")>	
+				AND event.eventlanguage IN (#arguments.selectedLanguage#)
+			</cfif>
+			<cfif Find("cat", "#arguments.btnName#")>	
+				AND event.eventtype IN (#arguments.selectedCategory#)
+			</cfif>			
 		</cfquery>		
     	<cfreturn qGetEventsFilter>
 	</cffunction>
+
+	<cffunction name="getLAnguages" access="public" returntype="query">
+		<cfquery name="qGetLanguages" datasource="#application.datasoursename#">
+			SELECT *
+			FROM languages			
+		</cfquery>
+		<cfreturn qGetLanguages> 		
+	</cffunction>
+
+	<cffunction name="getCategories" access="public" returntype="query">
+		<cfquery name="qGetCategories" datasource="#application.datasoursename#">
+			SELECT *
+			FROM eventcategory			
+		</cfquery>
+		<cfreturn qGetCategories> 		
+	</cffunction>
+
 </cfcomponent>
 

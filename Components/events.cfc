@@ -129,5 +129,55 @@
 		<cfreturn qGetCategories> 		
 	</cffunction>
 
-</cfcomponent>
+    <cffunction name="addLanguage" access="public">
+		<cfargument name="languagename">
+		<cfquery name="qaddLanguage" datasource="#application.datasoursename#">
+				INSERT INTO
+					languages (language)
+				VALUES 
+					(<cfqueryparam value="#arguments.languagename#" cfsqltype="CF_SQL_VARCHAR">)
+		</cfquery> 
+	</cffunction>
 
+	<cffunction name="deleteLanguages" access="remote">
+		<cfargument name="id">
+		<cfquery name="qdeleteLanguage" datasource="#application.datasoursename#">
+				DELETE 
+				FROM
+					languages 
+				WHERE 
+					(languageid=<cfqueryparam value="#arguments.id#" cfsqltype="CF_SQL_INTEGER">)
+		</cfquery> 
+		<cflocation url="../languages.cfm">
+	</cffunction>
+
+	<cffunction name="getEventHall" access="public" returntype="query">
+		<cfquery name="qGetEventHall" datasource="#application.datasoursename#">
+			SELECT *
+			FROM eventhall			
+		</cfquery>
+		<cfreturn qGetEventHall> 		
+	</cffunction>
+
+	<cffunction name="addEventHalls" access="public">
+		<cfargument name="eventhallname">
+		<cfquery name="qaddEventHalls" datasource="#application.datasoursename#">
+				INSERT INTO
+					eventhall (eventHallName)
+				VALUES 
+					(<cfqueryparam value="#arguments.eventhallname#" cfsqltype="CF_SQL_VARCHAR">)
+		</cfquery> 
+	</cffunction>
+
+	<cffunction name="deleteEventHalls" access="remote">
+		<cfargument name="id">
+		<cfquery name="qdeleteEventHalls" datasource="#application.datasoursename#">
+				DELETE 
+				FROM
+					eventhall 
+				WHERE 
+					(eventHallId=<cfqueryparam value="#arguments.id#" cfsqltype="CF_SQL_INTEGER">)
+		</cfquery> 
+		<cflocation url="../eventHalls.cfm">
+	</cffunction>
+</cfcomponent>

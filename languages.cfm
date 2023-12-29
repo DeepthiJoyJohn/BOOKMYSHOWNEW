@@ -1,37 +1,30 @@
 <html>
 	<form id="form" name="form" method="post" action="" enctype="multipart/form-data">
 		<head>	    
-			<title>BOOKMYSHOW</title>
+			<title> Movie Tickets, Plays, Sports, Events &amp; Cinemas near Delhi-NCR - BookMyShow Delhi-NCR.</title>
 			<link href="show/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 			<link href="show/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
 			<link href="show/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
 			<link href="show/css/style.css" rel="stylesheet">		
 			<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>		
-			<script src="js/home.js" type="text/javascript"></script>
+			<script src="js/home.js" type="text/javascript"></script>			
+			<link rel="shortcut icon" href="Images/Icon/icon1.png">
+			<link rel="stylesheet" href="css/style.css">
+			<link rel="stylesheet" href="css/styles.css"> 
+			<link rel="stylesheet" href="css/eventfilter.css"> 
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">                      
+			<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+			<script src="js/eventSeats.js"></script>
 		</head>
 		<cfset local.movieObject=createObject("component", "Components.events")>
 		<cfset languages=local.movieObject.getLanguages()>
 		<body>
-			<header id="header">			
-				<div class="d-flex flex-column">
-					<div class="profile">        
-						<h6 class="text-light">BOOKMYSHOW</h6>        
-					</div>
-					<nav id="navbar" class="nav-menu navbar">
-						<ul>			          	
-							<li><a href="admin.cfm" class="nav-link scrollto"><i class="bx bx-log-out"></i> <span>Back</span></a></li>		          
-						</ul>
-						<ul>			          	
-							<li><a href="index.cfm" class="nav-link scrollto"><i class="bx bx-log-out"></i> <span>logout</span></a></li>		          
-						</ul>
-					</nav>			      		      	
-				</div>
-			</header>		
+			<cfinclude template="header.cfm">	
 			<cfoutput>	
 				<section  class="d-flex flex-column justify-content-center align-items-center">				
 				<form id="form" name="form" method="post" action="">
 					<cfif isDefined("form.addbtn") AND (form.languagename neq "")>
-						<cfinvoke component="BOOKMYSHOW.Components.adminsettings" languagename="#form.languagename#" method="addlanguages" >
+						<cfset local.movieObject.addLanguage(form.languagename)>
 						<cflocation url="languages.cfm">
 					</cfif> 
 					<div class="container h-100 bodyclass">
@@ -67,7 +60,7 @@
 																#languages.language[i]#
 															</td>
 															<td>
-																<a title="DETELE" href="Components/adminsettings.cfc?method=deletelanguages&id=#languages.languageid[i]#">
+																<a title="DETELE" href="Components/events.cfc?method=deleteLanguages&id=#languages.languageid[i]#">
 																<i class="bx bx-trash" aria-hidden="true"></i>
 															</td>
 														</tr>
@@ -86,5 +79,7 @@
 			</section>
 			</cfoutput>
 		</body>
+		<cfinclude template="footer.cfm"> 
 	</form>
+	<script src="js/loginaction.js"></script> 
 </html>

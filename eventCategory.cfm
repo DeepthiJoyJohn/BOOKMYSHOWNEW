@@ -17,15 +17,16 @@
 			<script src="js/eventSeats.js"></script>
 		</head>
 		<cfset local.movieObject=createObject("component", "Components.events")>
-		<cfset languages=local.movieObject.getLanguages()>
+		<cfset local.eventCategory=local.movieObject.getEventCategory()>
+		<cfset local.eventTypes=local.movieObject.getEventTypes()>
 		<body>
 			<cfinclude template="header.cfm">	
 			<cfoutput>	
 				<section  class="d-flex flex-column justify-content-center align-items-center">				
 				<form id="form" name="form" method="post" action="">
-					<cfif isDefined("form.addbtn") AND (form.languagename neq "")>
-						<cfset local.movieObject.addLanguage(form.languagename)>
-						<cflocation url="languages.cfm">
+					<cfif isDefined("form.addbtn") AND (form.eventCategoryName neq "") AND (form.eventtype neq "")>
+						<cfset local.movieObject.addEventCategory(form.eventCategoryName,form.eventtype)>
+						<cflocation url="eventCategory.cfm">
 					</cfif> 
 					<div class="container h-100 bodyclass heightdiv">
 						<div class="row d-flex justify-content-center align-items-center h-100">
@@ -40,10 +41,24 @@
 															<b>Sl:No</b>
 														</td>														
 														<td>
-															<b>Language Name</b>
+															<b>Event Type</b>
 														</td>
 														<td>
-															<input type="text" class="form-control-sm small" id="languagename" name="languagename"><br>
+															<b>Event Category Name</b>
+														</td>
+													</tr>
+													<tr>
+														<td></td>
+														<td>															
+															<select class="form-select-sm"  name="eventtype" id="eventtype" required="yes">
+																<OPTION VALUE="">Select</OPTION>
+																<cfloop query="local.eventTypes">
+																	<OPTION VALUE="#eventtypeid#">#eventtype#</OPTION>
+																</cfloop>
+															</select>
+														</td>
+														<td>
+															<input type="text" class="form-control-sm small" id="eventCategoryName" name="eventCategoryName"><br>
 															<span id="errornamediv"></span>
 														</td>
 														<td>
@@ -51,17 +66,19 @@
 														</td>
 													</tr>
 													<cfset slno="1">																										
-													<cfloop index="i" from="1" to="#languages.RecordCount#">														
+													<cfloop index="i" from="1" to="#local.eventCategory.RecordCount#">														
 														<tr>
 															<td>
 																#slno#	
 															</td>
 															<td>
-																#languages.language[i]#
+																#local.eventCategory.eventypename[i]#
 															</td>
-															<td></td>
 															<td>
-																<a title="DETELE" href="Components/events.cfc?method=deleteLanguages&id=#languages.languageid[i]#">
+																#local.eventCategory.eventcategoryname[i]#
+															</td>
+															<td>
+																<a title="DETELE" href="Components/events.cfc?method=deleteEventCategory&id=#local.eventCategory.eventcategoryid[i]#">
 																<i class="bx bx-trash" aria-hidden="true"></i>
 															</td>
 														</tr>

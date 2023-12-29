@@ -17,15 +17,15 @@
 			<script src="js/eventSeats.js"></script>
 		</head>
 		<cfset local.movieObject=createObject("component", "Components.events")>
-		<cfset languages=local.movieObject.getLanguages()>
+		<cfset local.eventScreening=local.movieObject.getEventScreening()>
 		<body>
 			<cfinclude template="header.cfm">	
 			<cfoutput>	
 				<section  class="d-flex flex-column justify-content-center align-items-center">				
 				<form id="form" name="form" method="post" action="">
-					<cfif isDefined("form.addbtn") AND (form.languagename neq "")>
-						<cfset local.movieObject.addLanguage(form.languagename)>
-						<cflocation url="languages.cfm">
+					<cfif isDefined("form.addbtn") AND (form.eventScreeningName neq "")>
+						<cfset local.movieObject.addEventScreening(form.eventScreeningName)>
+						<cflocation url="movieScreening.cfm">
 					</cfif> 
 					<div class="container h-100 bodyclass heightdiv">
 						<div class="row d-flex justify-content-center align-items-center h-100">
@@ -40,10 +40,14 @@
 															<b>Sl:No</b>
 														</td>														
 														<td>
-															<b>Language Name</b>
+															<b>Movie Screening Name</b>
 														</td>
+														<td></td>
+													</tr>
+													<tr>
+														<td></td>
 														<td>
-															<input type="text" class="form-control-sm small" id="languagename" name="languagename"><br>
+															<input type="text" class="form-control-sm small" id="eventScreeningName" name="eventScreeningName"><br>
 															<span id="errornamediv"></span>
 														</td>
 														<td>
@@ -51,17 +55,16 @@
 														</td>
 													</tr>
 													<cfset slno="1">																										
-													<cfloop index="i" from="1" to="#languages.RecordCount#">														
-														<tr>
+													<cfloop index="i" from="1" to="#local.eventScreening.RecordCount#">														
+														<tr>														    
 															<td>
 																#slno#	
 															</td>
 															<td>
-																#languages.language[i]#
+																#local.eventScreening.eventscreeningname[i]#
 															</td>
-															<td></td>
 															<td>
-																<a title="DETELE" href="Components/events.cfc?method=deleteLanguages&id=#languages.languageid[i]#">
+																<a title="DETELE" href="Components/events.cfc?method=deleteEventScreening&id=#local.eventScreening.eventscreeningid[i]#">
 																<i class="bx bx-trash" aria-hidden="true"></i>
 															</td>
 														</tr>

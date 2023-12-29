@@ -17,15 +17,15 @@
 			<script src="js/eventSeats.js"></script>
 		</head>
 		<cfset local.movieObject=createObject("component", "Components.events")>
-		<cfset languages=local.movieObject.getLanguages()>
+		<cfset local.eventHall=local.movieObject.getEventHall()>
 		<body>
 			<cfinclude template="header.cfm">	
 			<cfoutput>	
 				<section  class="d-flex flex-column justify-content-center align-items-center">				
 				<form id="form" name="form" method="post" action="">
-					<cfif isDefined("form.addbtn") AND (form.languagename neq "")>
-						<cfset local.movieObject.addLanguage(form.languagename)>
-						<cflocation url="languages.cfm">
+					<cfif isDefined("form.addbtn") AND (form.eventHallName neq "")>
+						<cfset local.movieObject.addEventHalls(form.eventHallName)>
+						<cflocation url="eventHalls.cfm">
 					</cfif> 
 					<div class="container h-100 bodyclass heightdiv">
 						<div class="row d-flex justify-content-center align-items-center h-100">
@@ -40,10 +40,13 @@
 															<b>Sl:No</b>
 														</td>														
 														<td>
-															<b>Language Name</b>
+															<b>Event Hall Name</b>
 														</td>
+													</tr>
+													<tr>
+													    <td></td>
 														<td>
-															<input type="text" class="form-control-sm small" id="languagename" name="languagename"><br>
+															<input type="text" class="form-control-sm small" id="eventHallName" name="eventHallName"><br>
 															<span id="errornamediv"></span>
 														</td>
 														<td>
@@ -51,17 +54,16 @@
 														</td>
 													</tr>
 													<cfset slno="1">																										
-													<cfloop index="i" from="1" to="#languages.RecordCount#">														
+													<cfloop index="i" from="1" to="#local.eventHall.RecordCount#">														
 														<tr>
 															<td>
 																#slno#	
 															</td>
 															<td>
-																#languages.language[i]#
-															</td>
-															<td></td>
+																#local.eventHall.eventHallName[i]#
+															</td>															
 															<td>
-																<a title="DETELE" href="Components/events.cfc?method=deleteLanguages&id=#languages.languageid[i]#">
+																<a title="DETELE" href="Components/events.cfc?method=deleteEventHalls&id=#local.eventHall.eventHallId[i]#">
 																<i class="bx bx-trash" aria-hidden="true"></i>
 															</td>
 														</tr>
@@ -77,7 +79,7 @@
 						</div>
 					</div>			
 				</form>		    
-			</section>
+				</section>
 			</cfoutput>
 		</body>
 		<cfinclude template="footer.cfm"> 

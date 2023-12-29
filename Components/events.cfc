@@ -162,10 +162,10 @@
 	<cffunction name="addEventHalls" access="public">
 		<cfargument name="eventhallname">
 		<cfquery name="qaddEventHalls" datasource="#application.datasoursename#">
-				INSERT INTO
-					eventhall (eventHallName)
-				VALUES 
-					(<cfqueryparam value="#arguments.eventhallname#" cfsqltype="CF_SQL_VARCHAR">)
+			INSERT INTO
+				eventhall (eventHallName)
+			VALUES 
+				(<cfqueryparam value="#arguments.eventhallname#" cfsqltype="CF_SQL_VARCHAR">)
 		</cfquery> 
 	</cffunction>
 
@@ -179,5 +179,142 @@
 					(eventHallId=<cfqueryparam value="#arguments.id#" cfsqltype="CF_SQL_INTEGER">)
 		</cfquery> 
 		<cflocation url="../eventHalls.cfm">
+	</cffunction>
+
+	<cffunction name="getEventCategory" access="public" returntype="query">
+		<cfquery name="qGetEventCategory" datasource="#application.datasoursename#">
+			SELECT eventcategory.*,eventtype.eventtype as eventypename
+			FROM eventcategory 
+			INNER JOIN eventtype 
+			ON (eventcategory.eventtype=eventtype.eventtypeid)		
+		</cfquery>
+		<cfreturn qGetEventCategory> 		
+	</cffunction>
+
+	<cffunction name="addEventCategory" access="public">
+		<cfargument name="eventCategoryName">
+		<cfargument name="eventType">
+		<cfquery name="qaddEventCategory" datasource="#application.datasoursename#">
+			INSERT INTO
+				eventcategory (eventtype,eventcategoryname)
+			VALUES 
+				(<cfqueryparam value="#arguments.eventType#" cfsqltype="CF_SQL_INTEGER">,
+					<cfqueryparam value="#arguments.eventCategoryName#" cfsqltype="CF_SQL_VARCHAR">)
+		</cfquery> 
+	</cffunction>
+
+	<cffunction name="deleteEventCategory" access="remote">
+		<cfargument name="id">
+		<cfquery name="qdeleteEventCategory" datasource="#application.datasoursename#">
+				DELETE 
+				FROM
+					eventcategory
+				WHERE 
+					(eventcategoryid=<cfqueryparam value="#arguments.id#" cfsqltype="CF_SQL_INTEGER">)
+		</cfquery> 
+		<cflocation url="../eventCategory.cfm">
+	</cffunction>
+
+	<cffunction name="getEventsAdmin" access="public" returntype="query">
+		<cfquery name="qgetEventsAdmin" datasource="#application.datasoursename#">
+			SELECT event.*,eventtype.eventtype as eventtypename
+			FROM event 	
+			INNER JOIN eventtype
+			ON (event.eventtypeid=eventtype.eventtypeid)				
+		</cfquery>
+		<cfreturn qgetEventsAdmin> 		
+	</cffunction>
+
+	<cffunction name="addEventsAdmin" access="public">
+		<cfargument name="eventName">
+		<cfargument name="eventType">
+		<cfargument name="form">	
+		<cfset local.absolutePath = expandPath("Images\EventImages")>	
+		<cffile action="upload" filefield="fileUpload" destination="#local.absolutePath#" accept="image/jpeg,image/png,image/gif" nameconflict="makeunique">
+		<cfset local.filename="#cffile.serverFile#">
+		<cfquery name="qaddEventsAdmin" datasource="#application.datasoursename#">
+				INSERT INTO
+					event (eventtypeid,eventname,eventtype,eventlanguage,eventimg,eventdimension,eventratings)
+				VALUES 
+					(<cfqueryparam value="#arguments.eventType#" cfsqltype="CF_SQL_INTEGER">,
+					 <cfqueryparam value="#arguments.eventName#" cfsqltype="CF_SQL_VARCHAR">,
+					 <cfqueryparam value="#arguments.form.eventcategory#" cfsqltype="CF_SQL_INTEGER">,
+					 <cfqueryparam value="#arguments.form.eventlanguages#" cfsqltype="CF_SQL_INTEGER">,
+					 <cfqueryparam value="#local.filename#" cfsqltype="CF_SQL_VARCHAR">,
+					 <cfqueryparam value="#arguments.form.eventscreening#" cfsqltype="CF_SQL_VARCHAR">,
+					 <cfqueryparam value="#arguments.form.eventrate#" cfsqltype="CF_SQL_NUMERIC">)
+		</cfquery> 
+	</cffunction>
+
+	<cffunction name="deleteEvents" access="remote">
+		<cfargument name="id">
+		<cfquery name="qdeleteEvents" datasource="#application.datasoursename#">
+				DELETE 
+				FROM
+					event 
+				WHERE 
+					(eventid=<cfqueryparam value="#arguments.id#" cfsqltype="CF_SQL_INTEGER">)
+		</cfquery> 
+		<cflocation url="../addEvents.cfm">
+	</cffunction>
+
+	<cffunction name="getLanguageDisplay" access="public">
+		<cfargument name="languageid">
+		<cfquery name="qgetLanguageDisplay" datasource="#application.datasoursename#">
+	    	SELECT language
+			FROM languages
+			WHERE languageid=<cfqueryparam value="#arguments.languageid#" cfsqltype="CF_SQL_INTEGER">
+		</cfquery> 
+		<cfreturn qgetLanguageDisplay.language>
+	</cffunction>
+
+	<cffunction name="getEventCategoryDisplay" access="public">
+		<cfargument name="eventCategoryId">
+		<cfquery name="qgetEventCategoryDisplay" datasource="#application.datasoursename#">
+	    	SELECT eventcategoryname
+			FROM eventcategory
+			WHERE eventcategoryid=<cfqueryparam value="#arguments.eventCategoryId#" cfsqltype="CF_SQL_INTEGER">
+		</cfquery> 
+		<cfreturn qgetEventCategoryDisplay.eventcategoryname>
+	</cffunction>
+
+	<cffunction name="getEventScreening" access="public" returntype="query">
+		<cfquery name="qgetEventScreening" datasource="#application.datasoursename#">
+			SELECT *
+			FROM eventscreening	
+		</cfquery>
+		<cfreturn qgetEventScreening> 		
+	</cffunction>
+
+	<cffunction name="addEventScreening" access="public">
+		<cfargument name="eventScreeningName">
+		<cfquery name="qaddEventScreening" datasource="#application.datasoursename#">
+			INSERT INTO
+				eventscreening (eventscreeningname)
+			VALUES 
+				(<cfqueryparam value="#arguments.eventScreeningName#" cfsqltype="CF_SQL_VARCHAR">)				
+		</cfquery>				
+	</cffunction>
+
+	<cffunction name="deleteEventScreening" access="remote">
+		<cfargument name="id">
+		<cfquery name="qdeleteEventScreening" datasource="#application.datasoursename#">
+				DELETE 
+				FROM
+					eventscreening 
+				WHERE 
+					(eventscreeningid=<cfqueryparam value="#arguments.id#" cfsqltype="CF_SQL_INTEGER">)
+		</cfquery> 
+		<cflocation url="../movieScreening.cfm">
+	</cffunction>
+
+	<cffunction name="getEventScreeningDisplay" access="public">
+		<cfargument name="eventScreeningId">
+		<cfquery name="qgetEventScreeningDisplay" datasource="#application.datasoursename#">
+	    	SELECT eventscreeningname
+			FROM eventscreening
+			WHERE eventscreeningid=<cfqueryparam value="#arguments.eventScreeningId#" cfsqltype="CF_SQL_INTEGER">
+		</cfquery>
+		<cfreturn qgetEventScreeningDisplay.eventscreeningname>
 	</cffunction>
 </cfcomponent>

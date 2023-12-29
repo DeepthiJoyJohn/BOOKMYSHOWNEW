@@ -40,7 +40,7 @@
                         <cfloop query="#local.resultMovies#">
                             <div class="eventContainerListItemSub" onclick="redirectToEventDetail(#local.resultMovies.eventid#,1)">
                                 <div class="eventContainerListItemSub_ImageDiv">
-                                    <img src="#local.resultMovies.eventimg#"/>
+                                    <img src="Images/EventImages/#local.resultMovies.eventimg#"/>
                                 </div>
                                 <div class="eventContainerListItemSub_Description">
                                     <p class="eventContainerListItemSub_Description_Name">#local.resultMovies.eventname#</p>                                    
@@ -62,7 +62,7 @@
                         <cfloop query="#local.resultEvents#">
                             <div class="eventContainerListItemSub" onclick="redirectToEventDetail(#local.resultEvents.eventid#,2)">
                                 <div class="eventContainerListItemSub_ImageDiv">
-                                    <img src="#local.resultEvents.eventimg#"/>
+                                    <img src="Images/EventImages/#local.resultEvents.eventimg#"/>
                                 </div>
                                 <div class="eventContainerListItemSub_Description">
                                     <p class="eventContainerListItemSub_Description_Name">#local.resultEvents.eventname#</p>                                    

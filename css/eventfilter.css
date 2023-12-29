@@ -118,3 +118,37 @@
 .dateDetailFilter{
     margin-top:10px;
 }
+.imgthumpnail{
+    width:30px;
+    height:30px;
+}
+.custom-table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-left:-100px;
+  }
+  
+  .custom-table th,
+  .custom-table td {
+    border-bottom: 1px solid #ccc; /* Bottom border */
+    padding: 2px;
+    text-align: left;
+    font-size: 13px;
+    font-family: 'roboto', sans-serif;
+  }
+  
+  /* Style for header cells */
+  .custom-table th {
+    /*background-color: #201f1f;
+    /* Additional styles for headers if needed */
+  }
+  .small{
+    width:200px;
+    height:5px;
+  }
+  .heightdiv{
+    margin-bottom:90px;
+  }
+  
+  
+  

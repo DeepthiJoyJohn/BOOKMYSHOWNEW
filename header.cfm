@@ -122,6 +122,9 @@
         <cfif session.userrole EQ "1001">
             <a href="addEvents.cfm">Add Events</a>
             <a href="languages.cfm">Languages</a>
+            <a href="eventHalls.cfm">Event Halls</a>
+            <a href="eventCategory.cfm">Event Category</a>
+            <a href="movieScreening.cfm">Movie Screening</a>
         </cfif>
     </div>
 </cfoutput>

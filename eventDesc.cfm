@@ -24,7 +24,7 @@
                                     <div class="details">
                                         <div class="bestofElectronic_items1" onclick="redirectToEventDetail(#resultEvents.eventid#)">
                                             <div class="bestofElectronic_image_Product">
-                                                <img src="#resultEvents.eventimg#"/>
+                                                <img src="Images/EventImages/#resultEvents.eventimg#"/>
                                             </div>
                                             <div class="bestofElectronicmoreOption">
                                                 <p class="bestofElectronicProduct_name1">In Cinemas</p>
